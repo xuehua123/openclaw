@@ -1,0 +1,607 @@
+{
+  "repo": "openclaw/openclaw",
+  "html_url": "https://github.com/openclaw/openclaw",
+  "description": "Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 ",
+  "homepage": "https://openclaw.ai",
+  "stars": 233578,
+  "forks": 44910,
+  "open_issues": 8451,
+  "default_branch": "main",
+  "pushed_at": "2026-02-27T03:16:28Z",
+  "created_at": "2025-11-24T10:16:47Z",
+  "updated_at": "2026-02-27T03:28:41Z",
+  "archived": false,
+  "language": "TypeScript",
+  "topics": [
+    "ai",
+    "assistant",
+    "crustacean",
+    "molty",
+    "openclaw",
+    "own-your-data",
+    "personal"
+  ],
+  "license": "MIT",
+  "has_discussions": true,
+  "has_wiki": false,
+  "root_entries": [
+    {
+      "name": ".agent",
+      "type": "dir",
+      "path": ".agent"
+    },
+    {
+      "name": ".agents",
+      "type": "dir",
+      "path": ".agents"
+    },
+    {
+      "name": ".detect-secrets.cfg",
+      "type": "file",
+      "path": ".detect-secrets.cfg"
+    },
+    {
+      "name": ".dockerignore",
+      "type": "file",
+      "path": ".dockerignore"
+    },
+    {
+      "name": ".env.example",
+      "type": "file",
+      "path": ".env.example"
+    },
+    {
+      "name": ".gitattributes",
+      "type": "file",
+      "path": ".gitattributes"
+    },
+    {
+      "name": ".github",
+      "type": "dir",
+      "path": ".github"
+    },
+    {
+      "name": ".gitignore",
+      "type": "file",
+      "path": ".gitignore"
+    },
+    {
+      "name": ".mailmap",
+      "type": "file",
+      "path": ".mailmap"
+    },
+    {
+      "name": ".markdownlint-cli2.jsonc",
+      "type": "file",
+      "path": ".markdownlint-cli2.jsonc"
+    },
+    {
+      "name": ".npmrc",
+      "type": "file",
+      "path": ".npmrc"
+    },
+    {
+      "name": ".oxfmtrc.jsonc",
+      "type": "file",
+      "path": ".oxfmtrc.jsonc"
+    },
+    {
+      "name": ".oxlintrc.json",
+      "type": "file",
+      "path": ".oxlintrc.json"
+    },
+    {
+      "name": ".pi",
+      "type": "dir",
+      "path": ".pi"
+    },
+    {
+      "name": ".pre-commit-config.yaml",
+      "type": "file",
+      "path": ".pre-commit-config.yaml"
+    },
+    {
+      "name": ".secrets.baseline",
+      "type": "file",
+      "path": ".secrets.baseline"
+    },
+    {
+      "name": ".shellcheckrc",
+      "type": "file",
+      "path": ".shellcheckrc"
+    },
+    {
+      "name": ".swiftformat",
+      "type": "file",
+      "path": ".swiftformat"
+    },
+    {
+      "name": ".swiftlint.yml",
+      "type": "file",
+      "path": ".swiftlint.yml"
+    },
+    {
+      "name": ".vscode",
+      "type": "dir",
+      "path": ".vscode"
+    },
+    {
+      "name": "AGENTS.md",
+      "type": "file",
+      "path": "AGENTS.md"
+    },
+    {
+      "name": "CHANGELOG.md",
+      "type": "file",
+      "path": "CHANGELOG.md"
+    },
+    {
+      "name": "CLAUDE.md",
+      "type": "file",
+      "path": "CLAUDE.md"
+    },
+    {
+      "name": "CONTRIBUTING.md",
+      "type": "file",
+      "path": "CONTRIBUTING.md"
+    },
+    {
+      "name": "Dockerfile",
+      "type": "file",
+      "path": "Dockerfile"
+    },
+    {
+      "name": "Dockerfile.sandbox",
+      "type": "file",
+      "path": "Dockerfile.sandbox"
+    },
+    {
+      "name": "Dockerfile.sandbox-browser",
+      "type": "file",
+      "path": "Dockerfile.sandbox-browser"
+    },
+    {
+      "name": "Dockerfile.sandbox-common",
+      "type": "file",
+      "path": "Dockerfile.sandbox-common"
+    },
+    {
+      "name": "LICENSE",
+      "type": "file",
+      "path": "LICENSE"
+    },
+    {
+      "name": "README.md",
+      "type": "file",
+      "path": "README.md"
+    },
+    {
+      "name": "SECURITY.md",
+      "type": "file",
+      "path": "SECURITY.md"
+    },
+    {
+      "name": "Swabble",
+      "type": "dir",
+      "path": "Swabble"
+    },
+    {
+      "name": "VISION.md",
+      "type": "file",
+      "path": "VISION.md"
+    },
+    {
+      "name": "appcast.xml",
+      "type": "file",
+      "path": "appcast.xml"
+    },
+    {
+      "name": "apps",
+      "type": "dir",
+      "path": "apps"
+    },
+    {
+      "name": "assets",
+      "type": "dir",
+      "path": "assets"
+    },
+    {
+      "name": "changelog",
+      "type": "dir",
+      "path": "changelog"
+    },
+    {
+      "name": "docker-compose.yml",
+      "type": "file",
+      "path": "docker-compose.yml"
+    },
+    {
+      "name": "docker-setup.sh",
+      "type": "file",
+      "path": "docker-setup.sh"
+    },
+    {
+      "name": "docs.acp.md",
+      "type": "file",
+      "path": "docs.acp.md"
+    },
+    {
+      "name": "docs",
+      "type": "dir",
+      "path": "docs"
+    },
+    {
+      "name": "extensions",
+      "type": "dir",
+      "path": "extensions"
+    },
+    {
+      "name": "fly.private.toml",
+      "type": "file",
+      "path": "fly.private.toml"
+    },
+    {
+      "name": "fly.toml",
+      "type": "file",
+      "path": "fly.toml"
+    },
+    {
+      "name": "git-hooks",
+      "type": "dir",
+      "path": "git-hooks"
+    },
+    {
+      "name": "openclaw.mjs",
+      "type": "file",
+      "path": "openclaw.mjs"
+    },
+    {
+      "name": "openclaw.podman.env",
+      "type": "file",
+      "path": "openclaw.podman.env"
+    },
+    {
+      "name": "package.json",
+      "type": "file",
+      "path": "package.json"
+    },
+    {
+      "name": "packages",
+      "type": "dir",
+      "path": "packages"
+    },
+    {
+      "name": "patches",
+      "type": "dir",
+      "path": "patches"
+    },
+    {
+      "name": "pnpm-lock.yaml",
+      "type": "file",
+      "path": "pnpm-lock.yaml"
+    },
+    {
+      "name": "pnpm-workspace.yaml",
+      "type": "file",
+      "path": "pnpm-workspace.yaml"
+    },
+    {
+      "name": "pyproject.toml",
+      "type": "file",
+      "path": "pyproject.toml"
+    },
+    {
+      "name": "render.yaml",
+      "type": "file",
+      "path": "render.yaml"
+    },
+    {
+      "name": "scripts",
+      "type": "dir",
+      "path": "scripts"
+    },
+    {
+      "name": "setup-podman.sh",
+      "type": "file",
+      "path": "setup-podman.sh"
+    },
+    {
+      "name": "skills",
+      "type": "dir",
+      "path": "skills"
+    },
+    {
+      "name": "src",
+      "type": "dir",
+      "path": "src"
+    },
+    {
+      "name": "test",
+      "type": "dir",
+      "path": "test"
+    },
+    {
+      "name": "tsconfig.json",
+      "type": "file",
+      "path": "tsconfig.json"
+    },
+    {
+      "name": "tsconfig.plugin-sdk.dts.json",
+      "type": "file",
+      "path": "tsconfig.plugin-sdk.dts.json"
+    },
+    {
+      "name": "tsdown.config.ts",
+      "type": "file",
+      "path": "tsdown.config.ts"
+    },
+    {
+      "name": "ui",
+      "type": "dir",
+      "path": "ui"
+    },
+    {
+      "name": "vendor",
+      "type": "dir",
+      "path": "vendor"
+    },
+    {
+      "name": "vitest.config.ts",
+      "type": "file",
+      "path": "vitest.config.ts"
+    },
+    {
+      "name": "vitest.e2e.config.ts",
+      "type": "file",
+      "path": "vitest.e2e.config.ts"
+    },
+    {
+      "name": "vitest.extensions.config.ts",
+      "type": "file",
+      "path": "vitest.extensions.config.ts"
+    },
+    {
+      "name": "vitest.gateway.config.ts",
+      "type": "file",
+      "path": "vitest.gateway.config.ts"
+    },
+    {
+      "name": "vitest.live.config.ts",
+      "type": "file",
+      "path": "vitest.live.config.ts"
+    },
+    {
+      "name": "vitest.unit.config.ts",
+      "type": "file",
+      "path": "vitest.unit.config.ts"
+    },
+    {
+      "name": "zizmor.yml",
+      "type": "file",
+      "path": "zizmor.yml"
+    }
+  ],
+  "languages": {
+    "TypeScript": 27710600,
+    "Swift": 3260273,
+    "Kotlin": 595119,
+    "Shell": 267362,
+    "JavaScript": 222176,
+    "CSS": 142798,
+    "Python": 62109,
+    "Go": 49611,
+    "HTML": 28096,
+    "Dockerfile": 6196,
+    "Ruby": 3166
+  },
+  "readme_head": [
+    "# 🦞 OpenClaw — Personal AI Assistant",
+    "",
+    "<p align=\"center\">",
+    "    <picture>",
+    "        <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/openclaw-logo-text-dark.png\">",
+    "        <img src=\"https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/openclaw-logo-text.png\" alt=\"OpenClaw\" width=\"500\">",
+    "    </picture>",
+    "</p>",
+    "",
+    "<p align=\"center\">",
+    "  <strong>EXFOLIATE! EXFOLIATE!</strong>",
+    "</p>",
+    "",
+    "<p align=\"center\">",
+    "  <a href=\"https://github.com/openclaw/openclaw/actions/workflows/ci.yml?branch=main\"><img src=\"https://img.shields.io/github/actions/workflow/status/openclaw/openclaw/ci.yml?branch=main&style=for-the-badge\" alt=\"CI status\"></a>",
+    "  <a href=\"https://github.com/openclaw/openclaw/releases\"><img src=\"https://img.shields.io/github/v/release/openclaw/openclaw?include_prereleases&style=for-the-badge\" alt=\"GitHub release\"></a>",
+    "  <a href=\"https://discord.gg/clawd\"><img src=\"https://img.shields.io/discord/1456350064065904867?label=Discord&logo=discord&logoColor=white&color=5865F2&style=for-the-badge\" alt=\"Discord\"></a>",
+    "  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge\" alt=\"MIT License\"></a>",
+    "</p>",
+    "",
+    "**OpenClaw** is a _personal AI assistant_ you run on your own devices.",
+    "It answers you on the channels you already use (WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, Microsoft Teams, WebChat), plus extension channels like BlueBubbles, Matrix, Zalo, and Zalo Personal. It can speak and listen on macOS/iOS/Android, and can render a live Canvas you control. The Gateway is just the control plane — the product is the assistant.",
+    "",
+    "If you want a personal, single-user assistant that feels local, fast, and always-on, this is it.",
+    "",
+    "[Website](https://openclaw.ai) · [Docs](https://docs.openclaw.ai) · [Vision](VISION.md) · [DeepWiki](https://deepwiki.com/openclaw/openclaw) · [Getting Started](https://docs.openclaw.ai/start/getting-started) · [Updating](https://docs.openclaw.ai/install/updating) · [Showcase](https://docs.openclaw.ai/start/showcase) · [FAQ](https://docs.openclaw.ai/help/faq) · [Wizard](https://docs.openclaw.ai/start/wizard) · [Nix](https://github.com/openclaw/nix-openclaw) · [Docker](https://docs.openclaw.ai/install/docker) · [Discord](https://discord.gg/clawd)",
+    "",
+    "Preferred setup: run the onboarding wizard (`openclaw onboard`) in your terminal.",
+    "The wizard guides you step by step through setting up the gateway, workspace, channels, and skills. The CLI wizard is the recommended path and works on **macOS, Linux, and Windows (via WSL2; strongly recommended)**.",
+    "Works with npm, pnpm, or bun.",
+    "New install? Start here: [Getting started](https://docs.openclaw.ai/start/getting-started)",
+    "",
+    "## Sponsors",
+    "",
+    "| OpenAI                                                            | Blacksmith                                                                   |",
+    "| ----------------------------------------------------------------- | ---------------------------------------------------------------------------- |",
+    "| [![OpenAI](docs/assets/sponsors/openai.svg)](https://openai.com/) | [![Blacksmith](docs/assets/sponsors/blacksmith.svg)](https://blacksmith.sh/) |",
+    "",
+    "**Subscriptions (OAuth):**",
+    "",
+    "- **[OpenAI](https://openai.com/)** (ChatGPT/Codex)",
+    "",
+    "Model note: while any model is supported, I strongly recommend **Anthropic Pro/Max (100/200) + Opus 4.6** for long‑context strength and better prompt‑injection resistance. See [Onboarding](https://docs.openclaw.ai/start/onboarding).",
+    "",
+    "## Models (selection + auth)",
+    "",
+    "- Models config + CLI: [Models](https://docs.openclaw.ai/concepts/models)",
+    "- Auth profile rotation (OAuth vs API keys) + fallbacks: [Model failover](https://docs.openclaw.ai/concepts/model-failover)",
+    "",
+    "## Install (recommended)",
+    "",
+    "Runtime: **Node ≥22**.",
+    "",
+    "```bash",
+    "npm install -g openclaw@latest",
+    "# or: pnpm add -g openclaw@latest",
+    "",
+    "openclaw onboard --install-daemon",
+    "```",
+    "",
+    "The wizard installs the Gateway daemon (launchd/systemd user service) so it stays running.",
+    "",
+    "## Quick start (TL;DR)",
+    "",
+    "Runtime: **Node ≥22**.",
+    "",
+    "Full beginner guide (auth, pairing, channels): [Getting started](https://docs.openclaw.ai/start/getting-started)",
+    "",
+    "```bash",
+    "openclaw onboard --install-daemon",
+    "",
+    "openclaw gateway --port 18789 --verbose",
+    "",
+    "# Send a message",
+    "openclaw message send --to +1234567890 --message \"Hello from OpenClaw\"",
+    "",
+    "# Talk to the assistant (optionally deliver back to any connected channel: WhatsApp/Telegram/Slack/Discord/Google Chat/Signal/iMessage/BlueBubbles/Microsoft Teams/Matrix/Zalo/Zalo Personal/WebChat)",
+    "openclaw agent --message \"Ship checklist\" --thinking high",
+    "```",
+    "",
+    "Upgrading? [Updating guide](https://docs.openclaw.ai/install/updating) (and run `openclaw doctor`).",
+    "",
+    "## Development channels",
+    "",
+    "- **stable**: tagged releases (`vYYYY.M.D` or `vYYYY.M.D-<patch>`), npm dist-tag `latest`.",
+    "- **beta**: prerelease tags (`vYYYY.M.D-beta.N`), npm dist-tag `beta` (macOS app may be missing).",
+    "- **dev**: moving head of `main`, npm dist-tag `dev` (when published).",
+    "",
+    "Switch channels (git + npm): `openclaw update --channel stable|beta|dev`.",
+    "Details: [Development channels](https://docs.openclaw.ai/install/development-channels).",
+    "",
+    "## From source (development)",
+    "",
+    "Prefer `pnpm` for builds from source. Bun is optional for running TypeScript directly.",
+    "",
+    "```bash",
+    "git clone https://github.com/openclaw/openclaw.git",
+    "cd openclaw",
+    "",
+    "pnpm install",
+    "pnpm ui:build # auto-installs UI deps on first run",
+    "pnpm build",
+    "",
+    "pnpm openclaw onboard --install-daemon",
+    "",
+    "# Dev loop (auto-reload on TS changes)",
+    "pnpm gateway:watch",
+    "```",
+    "",
+    "Note: `pnpm openclaw ...` runs TypeScript directly (via `tsx`). `pnpm build` produces `dist/` for running via Node / the packaged `openclaw` binary.",
+    "",
+    "## Security defaults (DM access)",
+    "",
+    "OpenClaw connects to real messaging surfaces. Treat inbound DMs as **untrusted input**.",
+    "",
+    "Full security guide: [Security](https://docs.openclaw.ai/gateway/security)",
+    "",
+    "Default behavior on Telegram/WhatsApp/Signal/iMessage/Microsoft Teams/Discord/Google Chat/Slack:",
+    "",
+    "- **DM pairing** (`dmPolicy=\"pairing\"` / `channels.discord.dmPolicy=\"pairing\"` / `channels.slack.dmPolicy=\"pairing\"`; legacy: `channels.discord.dm.policy`, `channels.slack.dm.policy`): unknown senders receive a short pairing code and the bot does not process their message.",
+    "- Approve with: `openclaw pairing approve <channel> <code>` (then the sender is added to a local allowlist store).",
+    "- Public inbound DMs require an explicit opt-in: set `dmPolicy=\"open\"` and include `\"*\"` in the channel allowlist (`allowFrom` / `channels.discord.allowFrom` / `channels.slack.allowFrom`; legacy: `channels.discord.dm.allowFrom`, `channels.slack.dm.allowFrom`).",
+    "",
+    "Run `openclaw doctor` to surface risky/misconfigured DM policies.",
+    "",
+    "## Highlights",
+    "",
+    "- **[Local-first Gateway](https://docs.openclaw.ai/gateway)** — single control plane for sessions, channels, tools, and events.",
+    "- **[Multi-channel inbox](https://docs.openclaw.ai/channels)** — WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, BlueBubbles (iMessage), iMessage (legacy), Microsoft Teams, Matrix, Zalo, Zalo Personal, WebChat, macOS, iOS/Android.",
+    "- **[Multi-agent routing](https://docs.openclaw.ai/gateway/configuration)** — route inbound channels/accounts/peers to isolated agents (workspaces + per-agent sessions).",
+    "- **[Voice Wake](https://docs.openclaw.ai/nodes/voicewake) + [Talk Mode](https://docs.openclaw.ai/nodes/talk)** — always-on speech for macOS/iOS/Android with ElevenLabs.",
+    "- **[Live Canvas](https://docs.openclaw.ai/platforms/mac/canvas)** — agent-driven visual workspace with [A2UI](https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui).",
+    "- **[First-class tools](https://docs.openclaw.ai/tools)** — browser, canvas, nodes, cron, sessions, and Discord/Slack actions.",
+    "- **[Companion apps](https://docs.openclaw.ai/platforms/macos)** — macOS menu bar app + iOS/Android [nodes](https://docs.openclaw.ai/nodes).",
+    "- **[Onboarding](https://docs.openclaw.ai/start/wizard) + [skills](https://docs.openclaw.ai/tools/skills)** — wizard-driven setup with bundled/managed/workspace skills.",
+    "",
+    "## Star History",
+    "",
+    "[![Star History Chart](https://api.star-history.com/svg?repos=openclaw/openclaw&type=date&legend=top-left)](https://www.star-history.com/#openclaw/openclaw&type=date&legend=top-left)",
+    "",
+    "## Everything we built so far",
+    "",
+    "### Core platform",
+    "",
+    "- [Gateway WS control plane](https://docs.openclaw.ai/gateway) with sessions, presence, config, cron, webhooks, [Control UI](https://docs.openclaw.ai/web), and [Canvas host](https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui).",
+    "- [CLI surface](https://docs.openclaw.ai/tools/agent-send): gateway, agent, send, [wizard](https://docs.openclaw.ai/start/wizard), and [doctor](https://docs.openclaw.ai/gateway/doctor).",
+    "- [Pi agent runtime](https://docs.openclaw.ai/concepts/agent) in RPC mode with tool streaming and block streaming.",
+    "- [Session model](https://docs.openclaw.ai/concepts/session): `main` for direct chats, group isolation, activation modes, queue modes, reply-back. Group rules: [Groups](https://docs.openclaw.ai/channels/groups).",
+    "- [Media pipeline](https://docs.openclaw.ai/nodes/images): images/audio/video, transcription hooks, size caps, temp file lifecycle. Audio details: [Audio](https://docs.openclaw.ai/nodes/audio).",
+    "",
+    "### Channels",
+    "",
+    "- [Channels](https://docs.openclaw.ai/channels): [WhatsApp](https://docs.openclaw.ai/channels/whatsapp) (Baileys), [Telegram](https://docs.openclaw.ai/channels/telegram) (grammY), [Slack](https://docs.openclaw.ai/channels/slack) (Bolt), [Discord](https://docs.openclaw.ai/channels/discord) (discord.js), [Google Chat](https://docs.openclaw.ai/channels/googlechat) (Chat API), [Signal](https://docs.openclaw.ai/channels/signal) (signal-cli), [BlueBubbles](https://docs.openclaw.ai/channels/bluebubbles) (iMessage, recommended), [iMessage](https://docs.openclaw.ai/channels/imessage) (legacy imsg), [Microsoft Teams](https://docs.openclaw.ai/channels/msteams) (extension), [Matrix](https://docs.openclaw.ai/channels/matrix) (extension), [Zalo](https://docs.openclaw.ai/channels/zalo) (extension), [Zalo Personal](https://docs.openclaw.ai/channels/zalouser) (extension), [WebChat](https://docs.openclaw.ai/web/webchat).",
+    "- [Group routing](https://docs.openclaw.ai/channels/group-messages): mention gating, reply tags, per-channel chunking and routing. Channel rules: [Channels](https://docs.openclaw.ai/channels).",
+    "",
+    "### Apps + nodes",
+    "",
+    "- [macOS app](https://docs.openclaw.ai/platforms/macos): menu bar control plane, [Voice Wake](https://docs.openclaw.ai/nodes/voicewake)/PTT, [Talk Mode](https://docs.openclaw.ai/nodes/talk) overlay, [WebChat](https://docs.openclaw.ai/web/webchat), debug tools, [remote gateway](https://docs.openclaw.ai/gateway/remote) control.",
+    "- [iOS node](https://docs.openclaw.ai/platforms/ios): [Canvas](https://docs.openclaw.ai/platforms/mac/canvas), [Voice Wake](https://docs.openclaw.ai/nodes/voicewake), [Talk Mode](https://docs.openclaw.ai/nodes/talk), camera, screen recording, Bonjour pairing.",
+    "- [Android node](https://docs.openclaw.ai/platforms/android): [Canvas](https://docs.openclaw.ai/platforms/mac/canvas), [Talk Mode](https://docs.openclaw.ai/nodes/talk), camera, screen recording, optional SMS.",
+    "- [macOS node mode](https://docs.openclaw.ai/nodes): system.run/notify + canvas/camera exposure.",
+    "",
+    "### Tools + automation",
+    "",
+    "- [Browser control](https://docs.openclaw.ai/tools/browser): dedicated openclaw Chrome/Chromium, snapshots, actions, uploads, profiles.",
+    "- [Canvas](https://docs.openclaw.ai/platforms/mac/canvas): [A2UI](https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui) push/reset, eval, snapshot.",
+    "- [Nodes](https://docs.openclaw.ai/nodes): camera snap/clip, screen record, [location.get](https://docs.openclaw.ai/nodes/location-command), notifications.",
+    "- [Cron + wakeups](https://docs.openclaw.ai/automation/cron-jobs); [webhooks](https://docs.openclaw.ai/automation/webhook); [Gmail Pub/Sub](https://docs.openclaw.ai/automation/gmail-pubsub).",
+    "- [Skills platform](https://docs.openclaw.ai/tools/skills): bundled, managed, and workspace skills with install gating + UI.",
+    "",
+    "### Runtime + safety",
+    "",
+    "- [Channel routing](https://docs.openclaw.ai/channels/channel-routing), [retry policy](https://docs.openclaw.ai/concepts/retry), and [streaming/chunking](https://docs.openclaw.ai/concepts/streaming).",
+    "- [Presence](https://docs.openclaw.ai/concepts/presence), [typing indicators](https://docs.openclaw.ai/concepts/typing-indicators), and [usage tracking](https://docs.openclaw.ai/concepts/usage-tracking).",
+    "- [Models](https://docs.openclaw.ai/concepts/models), [model failover](https://docs.openclaw.ai/concepts/model-failover), and [session pruning](https://docs.openclaw.ai/concepts/session-pruning).",
+    "- [Security](https://docs.openclaw.ai/gateway/security) and [troubleshooting](https://docs.openclaw.ai/channels/troubleshooting).",
+    "",
+    "### Ops + packaging",
+    "",
+    "- [Control UI](https://docs.openclaw.ai/web) + [WebChat](https://docs.openclaw.ai/web/webchat) served directly from the Gateway.",
+    "- [Tailscale Serve/Funnel](https://docs.openclaw.ai/gateway/tailscale) or [SSH tunnels](https://docs.openclaw.ai/gateway/remote) with token/password auth.",
+    "- [Nix mode](https://docs.openclaw.ai/install/nix) for declarative config; [Docker](https://docs.openclaw.ai/install/docker)-based installs.",
+    "- [Doctor](https://docs.openclaw.ai/gateway/doctor) migrations, [logging](https://docs.openclaw.ai/logging).",
+    "",
+    "## How it works (short)",
+    "",
+    "```",
+    "WhatsApp / Telegram / Slack / Discord / Google Chat / Signal / iMessage / BlueBubbles / Microsoft Teams / Matrix / Zalo / Zalo Personal / WebChat",
+    "               │",
+    "               ▼",
+    "┌───────────────────────────────┐",
+    "│            Gateway            │",
+    "│       (control plane)         │",
+    "│     ws://127.0.0.1:18789      │",
+    "└──────────────┬────────────────┘",
+    "               │",
+    "               ├─ Pi agent (RPC)",
+    "               ├─ CLI (openclaw …)",
+    "               ├─ WebChat UI",
+    "               ├─ macOS app"
+  ],
+  "root_files": {
+    "README.md": "# 🦞 OpenClaw — Personal AI Assistant\n\n<p align=\"center\">\n    <picture>\n        <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/openclaw-logo-text-dark.png\">\n        <img src=\"https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/openclaw-logo-text.png\" alt=\"OpenClaw\" width=\"500\">\n    </picture>\n</p>\n\n<p align=\"center\">\n  <strong>EXFOLIATE! EXFOLIATE!</strong>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/openclaw/openclaw/actions/workflows/ci.yml?branch=main\"><img src=\"https://img.shields.io/github/actions/workflow/status/openclaw/openclaw/ci.yml?branch=main&style=for-the-badge\" alt=\"CI status\"></a>\n  <a href=\"https://github.com/openclaw/openclaw/releases\"><img src=\"https://img.shields.io/github/v/release/openclaw/openclaw?include_prereleases&style=for-the-badge\" alt=\"GitHub release\"></a>\n  <a href=\"https://discord.gg/clawd\"><img src=\"https://img.shields.io/discord/1456350064065904867?label=Discord&logo=discord&logoColor=white&color=5865F2&style=for-the-badge\" alt=\"Discord\"></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge\" alt=\"MIT License\"></a>\n</p>\n\n**OpenClaw** is a _personal AI assistant_ you run on your own devices.\nIt answers you on the channels you already use (WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, Microsoft Teams, WebChat), plus extension channels like BlueBubbles, Matrix, Zalo, and Zalo Personal. It can speak and listen on macOS/iOS/Android, and can render a live Canvas you control. The Gateway is just the control plane — the product is the assistant.\n\nIf you want a personal, single-user assistant that feels local, fast, and always-on, this is it.\n\n[Website](https://openclaw.ai) · [Docs](https://docs.openclaw.ai) · [Vision](VISION.md) · [DeepWiki](https://deepwiki.com/openclaw/openclaw) · [Getting Started](https://docs.openclaw.ai/start/getting-started) · [Updating](https://docs.openclaw.ai/install/updating) · [Showcase](https://docs.openclaw.ai/start/showcase) · [FAQ](https://docs.openclaw.ai/help/faq) · [Wizard](https://docs.openclaw.ai/start/wizard) · [Nix](https://github.com/openclaw/nix-openclaw) · [Docker](https://docs.openclaw.ai/install/docker) · [Discord](https://discord.gg/clawd)\n\nPreferred setup: run the onboarding wizard (`openclaw onboard`) in your terminal.\nThe wizard guides you step by step through setting up the gateway, workspace, channels, and skills. The CLI wizard is the recommended path and works on **macOS, Linux, and Windows (via WSL2; strongly recommended)**.\nWorks with npm, pnpm, or bun.\nNew install? Start here: [Getting started](https://docs.openclaw.ai/start/getting-started)\n\n## Sponsors\n\n| OpenAI                                                            | Blacksmith                                                                   |\n| ----------------------------------------------------------------- | ---------------------------------------------------------------------------- |\n| [![OpenAI](docs/assets/sponsors/openai.svg)](https://openai.com/) | [![Blacksmith](docs/assets/sponsors/blacksmith.svg)](https://blacksmith.sh/) |\n\n**Subscriptions (OAuth):**\n\n- **[OpenAI](https://openai.com/)** (ChatGPT/Codex)\n\nModel note: while any model is supported, I strongly recommend **Anthropic Pro/Max (100/200) + Opus 4.6** for long‑context strength and better prompt‑injection resistance. See [Onboarding](https://docs.openclaw.ai/start/onboarding).\n\n## Models (selection + auth)\n\n- Models config + CLI: [Models](https://docs.openclaw.ai/concepts/models)\n- Auth profile rotation (OAuth vs API keys) + fallbacks: [Model failover](https://docs.openclaw.ai/concepts/model-failover)\n\n## Install (recommended)\n\nRuntime: **Node ≥22**.\n\n```bash\nnpm install -g openclaw@latest\n# or: pnpm add -g openclaw@latest\n\nopenclaw onboard --install-daemon\n```\n\nThe wizard installs the Gateway daemon (launchd/systemd user service) so it stays running.\n\n## Quick start (TL;DR)\n\nRuntime: **Node ≥22**.\n\nFull beginner guide (auth, pairing, channels): [Getting started](https://docs.openclaw.ai/start/getting-started)\n\n```bash\nopenclaw onboard --install-daemon\n\nopenclaw gateway --port 18789 --verbose\n\n# Send a message\nopenclaw message send --to +1234567890 --message \"Hello from OpenClaw\"\n\n# Talk to the assistant (optionally deliver back to any connected channel: WhatsApp/Telegram/Slack/Discord/Google Chat/Signal/iMessage/BlueBubbles/Microsoft Teams/Matrix/Zalo/Zalo Personal/WebChat)\nopenclaw agent --message \"Ship checklist\" --thinking high\n```\n\nUpgrading? [Updating guide](https://docs.openclaw.ai/install/updating) (and run `openclaw doctor`).\n\n## Development channels\n\n- **stable**: tagged releases (`vYYYY.M.D` or `vYYYY.M.D-<patch>`), npm dist-tag `latest`.\n- **beta**: prerelease tags (`vYYYY.M.D-beta.N`), npm dist-tag `beta` (macOS app may be missing).\n- **dev**: moving head of `main`, npm dist-tag `dev` (when published).\n\nSwitch channels (git + npm): `openclaw update --channel stable|beta|dev`.\nDetails: [Development channels](https://docs.openclaw.ai/install/development-channels).\n\n## From source (development)\n\nPrefer `pnpm` for builds from source. Bun is optional for running TypeScript directly.\n\n```bash\ngit clone https://github.com/openclaw/openclaw.git\ncd openclaw\n\npnpm install\npnpm ui:build # auto-installs UI deps on first run\npnpm build\n\npnpm openclaw onboard --install-daemon\n\n# Dev loop (auto-reload on TS changes)\npnpm gateway:watch\n```\n\nNote: `pnpm openclaw ...` runs TypeScript directly (via `tsx`). `pnpm build` produces `dist/` for running via Node / the packaged `openclaw` binary.\n\n## Security defaults (DM access)\n\nOpenClaw connects to real messaging surfaces. Treat inbound DMs as **untrusted input**.\n\nFull security guide: [Security](https://docs.openclaw.ai/gateway/security)\n\nDefault behavior on Telegram/WhatsApp/Signal/iMessage/Microsoft Teams/Discord/Google Chat/Slack:\n\n- **DM pairing** (`dmPolicy=\"pairing\"` / `channels.discord.dmPolicy=\"pairing\"` / `channels.slack.dmPolicy=\"pairing\"`; legacy: `channels.discord.dm.policy`, `channels.slack.dm.policy`): unknown senders receive a short pairing code and the bot does not process their message.\n- Approve with: `openclaw pairing approve <channel> <code>` (then the sender is added to a local allowlist store).\n- Public inbound DMs require an explicit opt-in: set `dmPolicy=\"open\"` and include `\"*\"` in the channel allowlist (`allowFrom` / `channels.discord.allowFrom` / `channels.slack.allowFrom`; legacy: `channels.discord.dm.allowFrom`, `channels.slack.dm.allowFrom`).\n\nRun `openclaw doctor` to surface risky/misconfigured DM policies.\n\n## Highlights\n\n- **[Local-first Gateway](https://docs.openclaw.ai/gateway)** — single control plane for sessions, channels, tools, and events.\n- **[Multi-channel inbox](https://docs.openclaw.ai/channels)** — WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, BlueBubbles (iMessage), iMessage (legacy), Microsoft Teams, Matrix, Zalo, Zalo Personal, WebChat, macOS, iOS/Android.\n- **[Multi-agent routing](https://docs.openclaw.ai/gateway/configuration)** — route inbound channels/accounts/peers to isolated agents (workspaces + per-agent sessions).\n- **[Voice Wake](https://docs.openclaw.ai/nodes/voicewake) + [Talk Mode](https://docs.openclaw.ai/nodes/talk)** — always-on speech for macOS/iOS/Android with ElevenLabs.\n- **[Live Canvas](https://docs.openclaw.ai/platforms/mac/canvas)** — agent-driven visual workspace with [A2UI](https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui).\n- **[First-class tools](https://docs.openclaw.ai/tools)** — browser, canvas, nodes, cron, sessions, and Discord/Slack actions.\n- **[Companion apps](https://docs.openclaw.ai/platforms/macos)** — macOS menu bar app + iOS/Android [nodes](https://docs.openclaw.ai/nodes).\n- **[Onboarding](https://docs.openclaw.ai/start/wizard) + [skills](https://docs.openclaw.ai/tools/skills)** — wizard-driven setup with bundled/managed/workspace skills.\n\n## Star History\n\n[![Star History Chart](https://api.star-history.com/svg?repos=openclaw/openclaw&type=date&legend=top-left)](https://www.star-history.com/#openclaw/openclaw&type=date&legend=top-left)\n\n## Everything we built so far\n\n### Core platform\n\n- [Gateway WS control plane](https://docs.openclaw.ai/gateway) with sessions, presence, config, cron, webhooks, [Control UI](https://docs.openclaw.ai/web), and [Canvas host](https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui).\n- [CLI surface](https://docs.openclaw.ai/tools/agent-send): gateway, agent, send, [wizard](https://docs.openclaw.ai/start/wizard), and [doctor](https://docs.openclaw.ai/gateway/doctor).\n- [Pi agent runtime](https://docs.openclaw.ai/concepts/agent) in RPC mode with tool streaming and block streaming.\n- [Session model](https://docs.openclaw.ai/concepts/session): `main` for direct chats, group isolation, activation modes, queue modes, reply-back. Group rules: [Groups](https://docs.openclaw.ai/channels/groups).\n- [Media pipeline](https://docs.openclaw.ai/nodes/images): images/audio/video, transcription hooks, size caps, temp file lifecycle. Audio details: [Audio](https://docs.openclaw.ai/nodes/audio).\n\n### Channels\n\n- [Channels](https://docs.openclaw.ai/channels): [WhatsApp](https://docs.openclaw.ai/channels/whatsapp) (Baileys), [Telegram](https://docs.openclaw.ai/channels/telegram) (grammY), [Slack](https://docs.openclaw.ai/channels/slack) (Bolt), [Discord](https://docs.openclaw.ai/channels/discord) (discord.js), [Google Chat](https://docs.openclaw.ai/channels/googlechat) (Chat API), [Signal](https://docs.openclaw.ai/channels/signal) (signal-cli), [BlueBubbles](https://docs.openclaw.ai/channels/bluebubbles) (iMessage, recommended), [iMessage](https://docs.openclaw.ai/channels/imessage) (legacy imsg), [Microsoft Teams](https://docs.openclaw.ai/channels/msteams) (extension), [Matrix](https://docs.openclaw.ai/channels/matrix) (extension), [Zalo](https://docs.openclaw.ai/channels/zalo) (extension), [Zalo Personal](https://docs.openclaw.ai/channels/zalouser) (extension), [WebChat](https://docs.openclaw.ai/web/webchat).\n- [Group routing](https://docs.openclaw.ai/channels/group-messages): mention gating, reply tags, per-channel chunking and routing. Channel rules: [Channels](https://docs.openclaw.ai/channels).\n\n### Apps + nodes\n\n- [macOS app](https://docs.openclaw.ai/platforms/macos): menu bar control plane, [Voice Wake](https://docs.openclaw.ai/nodes/voicewake)/PTT, [Talk Mode](https://docs.openclaw.ai/nodes/talk) overlay, [WebChat](https://docs.openclaw.ai/web/webchat), debug tools, [remote gateway](https://docs.openclaw.ai/gateway/remote) control.\n- [iOS node](https://docs.openclaw.ai/platforms/ios): [Canvas](https://docs.openclaw.ai/platforms/mac/canvas), [Voice Wake](https://docs.openclaw.ai/nodes/voicewake), [Talk Mode](https://docs.openclaw.ai/nodes/talk), camera, screen recording, Bonjour pairing.\n- [Android node](https://docs.openclaw.ai/platforms/android): [Canvas](https://docs.openclaw.ai/platforms/mac/canvas), [Talk Mode](https://docs.openclaw.ai/nodes/talk), camera, screen recording, optional SMS.\n- [macOS node mode](https://docs.openclaw.ai/nodes): system.run/notify + canvas/camera exposure.\n\n### Tools + automation\n\n- [Browser control](https://docs.openclaw.ai/tools/browser): dedicated openclaw Chrome/Chromium, snapshots, actions, uploads, profiles.\n- [Canvas](https://docs.openclaw.ai/platforms/mac/canvas): [A2UI](https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui) push/reset, eval, snapshot.\n- [Nodes](https://docs.openclaw.ai/nodes): camera snap/clip, screen record, [location.get](https://docs.openclaw.ai/nodes/location-command), notifications.\n- [Cron + wakeups](https://docs.openclaw.ai/automation/cron-jobs); [webhooks](https://docs.openclaw.ai/automation/webhook); [Gmail Pub/Sub](https://docs.openclaw.ai/automation/gmail-pubsub).\n- [Skills platform](https://docs.openclaw.ai/tools/skills): bundled, managed, and workspace skills with install gating + UI.\n\n### Runtime + safety\n\n- [Channel routing](https://docs.openclaw.ai/channels/channel-routing), [retry policy](https://docs.openclaw.ai/concepts/retry), and [streaming/chunking](https://docs.openclaw.ai/concepts/streaming).\n- [Presence](https://docs.openclaw.ai/concepts/presence), [typing indicators](https://docs.openclaw.ai/concepts/typing-indicators), and [usage tracking](https://docs.openclaw.ai/concepts/usage-tracking).\n- [Models](https://docs.openclaw.ai/concepts/models), [model failover](https://docs.openclaw.ai/concepts/model-failover), and [session pruning](https://docs.openclaw.ai/concepts/session-pruning).\n- [Security](https://docs.openclaw.ai/gateway/security) and [troubleshooting](https://docs.openclaw.ai/channels/troubleshooting).\n\n### Ops + packaging\n\n- [Control UI](https://docs.openclaw.ai/web) + [WebChat](https://docs.openclaw.ai/web/webchat) served directly from the Gateway.\n- [Tailscale Serve/Funnel](https://docs.openclaw.ai/gateway/tailscale) or [SSH tunnels](https://docs.openclaw.ai/gateway/remote) with token/password auth.\n- [Nix mode](https://docs.openclaw.ai/install/nix) for declarative config; [Docker](https://docs.openclaw.ai/install/docker)-based installs.\n- [Doctor](https://docs.openclaw.ai/gateway/doctor) migrations, [logging](https://docs.openclaw.ai/logging).\n\n## How it works (short)\n\n```\nWhatsApp / Telegram / Slack / Discord / Google Chat / Signal / iMessage / BlueBubbles / Microsoft Teams / Matrix / Zalo / Zalo Personal / WebChat\n               │\n               ▼\n┌───────────────────────────────┐\n│            Gateway            │\n│       (control plane)         │\n│     ws://127.0.0.1:18789      │\n└──────────────┬────────────────┘\n               │\n               ├─ Pi agent (RPC)\n               ├─ CLI (openclaw …)\n               ├─ WebChat UI\n               ├─ macOS app\n               └─ iOS / Android nodes\n```\n\n## Key subsystems\n\n- **[Gateway WebSocket network](https://docs.openclaw.ai/concepts/architecture)** — single WS control plane for clients, tools, and events (plus ops: [Gateway runbook](https://docs.openclaw.ai/gateway)).\n- **[Tailscale exposure](https://docs.openclaw.ai/gateway/tailscale)** — Serve/Funnel for the Gateway dashboard + WS (remote access: [Remote](https://docs.openclaw.ai/gateway/remote)).\n- **[Browser control](https://docs.openclaw.ai/tools/browser)** — openclaw‑managed Chrome/Chromium with CDP control.\n- **[Canvas + A2UI](https://docs.openclaw.ai/platforms/mac/canvas)** — agent‑driven visual workspace (A2UI host: [Canvas/A2UI](https://docs.openclaw.ai/platforms/mac/canvas#canvas-a2ui)).\n- **[Voice Wake](https://docs.openclaw.ai/nodes/voicewake) + [Talk Mode](https://docs.openclaw.ai/nodes/talk)** — always‑on speech and continuous conversation.\n- **[Nodes](https://docs.openclaw.ai/nodes)** — Canvas, camera snap/clip, screen record, `location.get`, notifications, plus macOS‑only `system.run`/`system.notify`.\n\n## Tailscale access (Gateway dashboard)\n\nOpenClaw can auto-configure Tailscale **Serve** (tailnet-only) or **Funnel** (public) while the Gateway stays bound to loopback. Configure `gateway.tailscale.mode`:\n\n- `off`: no Tailscale automation (default).\n- `serve`: tailnet-only HTTPS via `tailscale serve` (uses Tailscale identity headers by default).\n- `funnel`: public HTTPS via `tailscale funnel` (requires shared password auth).\n\nNotes:\n\n- `gateway.bind` must stay `loopback` when Serve/Funnel is enabled (OpenClaw enforces this).\n- Serve can be forced to require a password by setting `gateway.auth.mode: \"password\"` or `gateway.auth.allowTailscale: false`.\n- Funnel refuses to start unless `gateway.auth.mode: \"password\"` is set.\n- Optional: `gateway.tailscale.resetOnExit` to undo Serve/Funnel on shutdown.\n\nDetails: [Tailscale guide](https://docs.openclaw.ai/gateway/tailscale) · [Web surfaces](https://docs.openclaw.ai/web)\n\n## Remote Gateway (Linux is great)\n\nIt’s perfectly fine to run the Gateway on a small Linux instance. Clients (macOS app, CLI, WebChat) can connect over **Tailscale Serve/Funnel** or **SSH tunnels**, and you can still pair device nodes (macOS/iOS/Android) to execute device‑local actions when needed.\n\n- **Gateway host** runs the exec tool and channel connections by default.\n- **Device nodes** run device‑local actions (`system.run`, camera, screen recording, notifications) via `node.invoke`.\n  In short: exec runs where the Gateway lives; device actions run where the device lives.\n\nDetails: [Remote access](https://docs.openclaw.ai/gateway/remote) · [Nodes](https://docs.openclaw.ai/nodes) · [Security](https://docs.openclaw.ai/gateway/security)\n\n## macOS permissions via the Gateway protocol\n\nThe macOS app can run in **node mode** and advertises its capabilities + permission map over the Gateway WebSocket (`node.list` / `node.describe`). Clients can then execute local actions via `node.invoke`:\n\n- `system.run` runs a local command and returns stdout/stderr/exit code; set `needsScreenRecording: true` to require screen-recording permission (otherwise you’ll get `PERMISSION_MISSING`).\n- `system.notify` posts a user notification and fails if notifications are denied.\n- `canvas.*`, `camera.*`, `screen.record`, and `location.get` are also routed via `node.invoke` and follow TCC permission status.\n\nElevated bash (host permissions) is separate from macOS TCC:\n\n- Use `/elevated on|off` to toggle per‑session elevated access when enabled + allowlisted.\n- Gateway persists the per‑session toggle via `sessions.patch` (WS method) alongside `thinkingLevel`, `verboseLevel`, `model`, `sendPolicy`, and `groupActivation`.\n\nDetails: [Nodes](https://docs.openclaw.ai/nodes) · [macOS app](https://docs.openclaw.ai/platforms/macos) · [Gateway protocol](https://docs.openclaw.ai/concepts/architecture)\n\n## Agent to Agent (sessions\\_\\* tools)\n\n- Use these to coordinate work across sessions without jumping between chat surfaces.\n- `sessions_list` — discover active sessions (agents) and their metadata.\n- `sessions_history` — fetch transcript logs for a session.\n- `sessions_send` — message another session; optional reply‑back ping‑pong + announce step (`REPLY_SKIP`, `ANNOUNCE_SKIP`).\n\nDetails: [Session tools](https://docs.openclaw.ai/concepts/session-tool)\n\n## Skills registry (ClawHub)\n\nClawHub is a minimal skill registry. With ClawHub enabled, the agent can search for skills automatically and pull in new ones as needed.\n\n[ClawHub](https://clawhub.com)\n\n## Chat commands\n\nSend these in WhatsApp/Telegram/Slack/Google Chat/Microsoft Teams/WebChat (group commands are owner-only):\n\n- `/status` — compact session status (model + tokens, cost when available)\n- `/new` or `/reset` — reset the session\n- `/compact` — compact session context (summary)\n- `/think <level>` — off|minimal|low|medium|high|xhigh (GPT-5.2 + Codex models only)\n- `/verbose on|off`\n- `/usage off|tokens|full` — per-response usage footer\n- `/restart` — restart the gateway (owner-only in groups)\n- `/activation mention|always` — group activation toggle (groups only)\n\n## Apps (optional)\n\nThe Gateway alone delivers a great experience. All apps are optional and add extra features.\n\nIf you plan to build/run companion apps, follow the platform runbooks below.\n\n### macOS (OpenClaw.app) (optional)\n\n- Menu bar control for the Gateway and health.\n- Voice Wake + push-to-talk overlay.\n- WebChat + debug tools.\n- Remote gateway control over SSH.\n\nNote: signed builds required for macOS permissions to stick across rebuilds (see `docs/mac/permissions.md`).\n\n### iOS node (optional)\n\n- Pairs as a node via the Bridge.\n- Voice trigger forwarding + Canvas surface.\n- Controlled via `openclaw nodes …`.\n\nRunbook: [iOS connect](https://docs.openclaw.ai/platforms/ios).\n\n### Android node (optional)\n\n- Pairs via the same Bridge + pairing flow as iOS.\n- Exposes Canvas, Camera, and Screen capture commands.\n- Runbook: [Android connect](https://docs.openclaw.ai/platforms/android).\n\n## Agent workspace + skills\n\n- Workspace root: `~/.openclaw/workspace` (configurable via `agents.defaults.workspace`).\n- Injected prompt files: `AGENTS.md`, `SOUL.md`, `TOOLS.md`.\n- Skills: `~/.openclaw/workspace/skills/<skill>/SKILL.md`.\n\n## Configuration\n\nMinimal `~/.openclaw/openclaw.json` (model + defaults):\n\n```json5\n{\n  agent: {\n    model: \"anthropic/claude-opus-4-6\",\n  },\n}\n```\n\n[Full configuration reference (all keys + examples).](https://docs.openclaw.ai/gateway/configuration)\n\n## Security model (important)\n\n- **Default:** tools run on the host for the **main** session, so the agent has full access when it’s just you.\n- **Group/channel safety:** set `agents.defaults.sandbox.mode: \"non-main\"` to run **non‑main sessions** (groups/channels) inside per‑session Docker sandboxes; bash then runs in Docker for those sessions.\n- **Sandbox defaults:** allowlist `bash`, `process`, `read`, `write`, `edit`, `sessions_list`, `sessions_history`, `sessions_send`, `sessions_spawn`; denylist `browser`, `canvas`, `nodes`, `cron`, `discord`, `gateway`.\n\nDetails: [Security guide](https://docs.openclaw.ai/gateway/security) · [Docker + sandboxing](https://docs.openclaw.ai/install/docker) · [Sandbox config](https://docs.openclaw.ai/gateway/configuration)\n\n### [WhatsApp](https://docs.openclaw.ai/channels/whatsapp)\n\n- Link the device: `pnpm openclaw channels login` (stores creds in `~/.openclaw/credentials`).\n- Allowlist who can talk to the assistant via `channels.whatsapp.allowFrom`.\n- If `channels.whatsapp.groups` is set, it becomes a group allowlist; include `\"*\"` to allow all.\n\n### [Telegram](https://docs.openclaw.ai/channels/telegram)\n\n- Set `TELEGRAM_BOT_TOKEN` or `channels.telegram.botToken` (env wins).\n- Optional: set `channels.telegram.groups` (with `channels.telegram.groups.\"*\".requireMention`); when set, it is a group allowlist (include `\"*\"` to allow all). Also `channels.telegram.allowFrom` or `channels.telegram.webhookUrl` + `channels.telegram.webhookSecret` as needed.\n\n```json5\n{\n  channels: {\n    telegram: {\n      botToken: \"123456:ABCDEF\",\n    },\n  },\n}\n```\n\n### [Slack](https://docs.openclaw.ai/channels/slack)\n\n- Set `SLACK_BOT_TOKEN` + `SLACK_APP_TOKEN` (or `channels.slack.botToken` + `channels.slack.appToken`).\n\n### [Discord](https://docs.openclaw.ai/channels/discord)\n\n- Set `DISCORD_BOT_TOKEN` or `channels.discord.token` (env wins).\n- Optional: set `commands.native`, `commands.text`, or `commands.useAccessGroups`, plus `channels.discord.allowFrom`, `channels.discord.guilds`, or `channels.discord.mediaMaxMb` as needed.\n\n```json5\n{\n  channels: {\n    discord: {\n      token: \"1234abcd\",\n    },\n  },\n}\n```\n\n### [Signal](https://docs.openclaw.ai/channels/signal)\n\n- Requires `signal-cli` and a `channels.signal` config section.\n\n### [BlueBubbles (iMessage)](https://docs.openclaw.ai/channels/bluebubbles)\n\n- **Recommended** iMessage integration.\n- Configure `channels.bluebubbles.serverUrl` + `channels.bluebubbles.password` and a webhook (`channels.bluebubbles.webhookPath`).\n- The BlueBubbles server runs on macOS; the Gateway can run on macOS or elsewhere.\n\n### [iMessage (legacy)](https://docs.openclaw.ai/channels/imessage)\n\n- Legacy macOS-only integration via `imsg` (Messages must be signed in).\n- If `channels.imessage.groups` is set, it becomes a group allowlist; include `\"*\"` to allow all.\n\n### [Microsoft Teams](https://docs.openclaw.ai/channels/msteams)\n\n- Configure a Teams app + Bot Framework, then add a `msteams` config section.\n- Allowlist who can talk via `msteams.allowFrom`; group access via `msteams.groupAllowFrom` or `msteams.groupPolicy: \"open\"`.\n\n### [WebChat](https://docs.openclaw.ai/web/webchat)\n\n- Uses the Gateway WebSocket; no separate WebChat port/config.\n\nBrowser control (optional):\n\n```json5\n{\n  browser: {\n    enabled: true,\n    color: \"#FF4500\",\n  },\n}\n```\n\n## Docs\n\nUse these when you’re past the onboarding flow and want the deeper reference.\n\n- [Start with the docs index for navigation and “what’s where.”](https://docs.openclaw.ai)\n- [Read the architecture overview for the gateway + protocol model.](https://docs.openclaw.ai/concepts/architecture)\n- [Use the full configuration reference when you need every key and example.](https://docs.openclaw.ai/gateway/configuration)\n- [Run the Gateway by the book with the operational runbook.](https://docs.openclaw.ai/gateway)\n- [Learn how the Control UI/Web surfaces work and how to expose them safely.](https://docs.openclaw.ai/web)\n- [Understand remote access over SSH tunnels or tailnets.](https://docs.openclaw.ai/gateway/remote)\n- [Follow the onboarding wizard flow for a guided setup.](https://docs.openclaw.ai/start/wizard)\n- [Wire external triggers via the webhook surface.](https://docs.openclaw.ai/automation/webhook)\n- [Set up Gmail Pub/Sub triggers.](https://docs.openclaw.ai/automation/gmail-pubsub)\n- [Learn the macOS menu bar companion details.](https://docs.openclaw.ai/platforms/mac/menu-bar)\n- [Platform guides: Windows (WSL2)](https://docs.openclaw.ai/platforms/windows), [Linux](https://docs.openclaw.ai/platforms/linux), [macOS](https://docs.openclaw.ai/platforms/macos), [iOS](https://docs.openclaw.ai/platforms/ios), [Android](https://docs.openclaw.ai/platforms/android)\n- [Debug common failures with the troubleshooting guide.](https://docs.openclaw.ai/channels/troubleshooting)\n- [Review security guidance before exposing anything.](https://docs.openclaw.ai/gateway/security)\n\n## Advanced docs (discovery + control)\n\n- [Discovery + transports](https://docs.openclaw.ai/gateway/discovery)\n- [Bonjour/mDNS](https://docs.openclaw.ai/gateway/bonjour)\n- [Gateway pairing](https://docs.openclaw.ai/gateway/pairing)\n- [Remote gateway README](https://docs.openclaw.ai/gateway/remote-gateway-readme)\n- [Control UI](https://docs.openclaw.ai/web/control-ui)\n- [Dashboard](https://docs.openclaw.ai/web/dashboard)\n\n## Operations & troubleshooting\n\n- [Health checks](https://docs.openclaw.ai/gateway/health)\n- [Gateway lock](https://docs.openclaw.ai/gateway/gateway-lock)\n- [Background process](https://docs.openclaw.ai/gateway/background-process)\n- [Browser troubleshooting (Linux)](https://docs.openclaw.ai/tools/browser-linux-troubleshooting)\n- [Logging](https://docs.openclaw.ai/logging)\n\n## Deep dives\n\n- [Agent loop](https://docs.openclaw.ai/concepts/agent-loop)\n- [Presence](https://docs.openclaw.ai/concepts/presence)\n- [TypeBox schemas](https://docs.openclaw.ai/concepts/typebox)\n- [RPC adapters](https://docs.openclaw.ai/reference/rpc)\n- [Queue](https://docs.openclaw.ai/concepts/queue)\n\n## Workspace & skills\n\n- [Skills config](https://docs.openclaw.ai/tools/skills-config)\n- [Default AGENTS](https://docs.openclaw.ai/reference/AGENTS.default)\n- [Templates: AGENTS](https://docs.openclaw.ai/reference/templates/AGENTS)\n- [Templates: BOOTSTRAP](https://docs.openclaw.ai/reference/templates/BOOTSTRAP)\n- [Templates: IDENTITY](https://docs.openclaw.ai/reference/templates/IDENTITY)\n- [Templates: SOUL](https://docs.openclaw.ai/reference/templates/SOUL)\n- [Templates: TOOLS](https://docs.openclaw.ai/reference/templates/TOOLS)\n- [Templates: USER](https://docs.openclaw.ai/reference/templates/USER)\n\n## Platform internals\n\n- [macOS dev setup](https://docs.openclaw.ai/platforms/mac/dev-setup)\n- [macOS menu bar](https://docs.openclaw.ai/platforms/mac/menu-bar)\n- [macOS voice wake](https://docs.openclaw.ai/platforms/mac/voicewake)\n- [iOS node](https://docs.openclaw.ai/platforms/ios)\n- [Android node](https://docs.openclaw.ai/platforms/android)\n- [Windows (WSL2)](https://docs.openclaw.ai/platforms/windows)\n- [Linux app](https://docs.openclaw.ai/platforms/linux)\n\n## Email hooks (Gmail)\n\n- [docs.openclaw.ai/gmail-pubsub](https://docs.openclaw.ai/automation/gmail-pubsub)\n\n## Molty\n\nOpenClaw was built for **Molty**, a space lobster AI assistant. 🦞\nby Peter Steinberger and the community.\n\n- [openclaw.ai](https://openclaw.ai)\n- [soul.md](https://soul.md)\n- [steipete.me](https://steipete.me)\n- [@openclaw](https://x.com/openclaw)\n\n## Community\n\nSee [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines, maintainers, and how to submit PRs.\nAI/vibe-coded PRs welcome! 🤖\n\nSpecial thanks to [Mario Zechner](https://mariozechner.at/) for his support and for\n[pi-mono](https://github.com/badlogic/pi-mono).\nSpecial thanks to Adam Doppelt for lobster.bot.\n\nThanks to all clawtributors:\n\n<p align=\"left\">\n  <a href=\"https://github.com/steipete\"><img src=\"https://avatars.githubusercontent.com/u/58493?v=4&s=48\" width=\"48\" height=\"48\" alt=\"steipete\" title=\"steipete\"/></a> <a href=\"https://github.com/sktbrd\"><img src=\"https://avatars.githubusercontent.com/u/116202536?v=4&s=48\" width=\"48\" height=\"48\" alt=\"sktbrd\" title=\"sktbrd\"/></a> <a href=\"https://github.com/cpojer\"><img src=\"https://avatars.githubusercontent.com/u/13352?v=4&s=48\" width=\"48\" height=\"48\" alt=\"cpojer\" title=\"cpojer\"/></a> <a href=\"https://github.com/joshp123\"><img src=\"https://avatars.githubusercontent.com/u/1497361?v=4&s=48\" width=\"48\" height=\"48\" alt=\"joshp123\" title=\"joshp123\"/></a> <a href=\"https://github.com/mbelinky\"><img src=\"https://avatars.githubusercontent.com/u/132747814?v=4&s=48\" width=\"48\" height=\"48\" alt=\"Mariano Belinky\" title=\"Mariano Belinky\"/></a> <a href=\"https://github.com/Takhoffman\"><img src=\"https://avatars.githubusercontent.com/u/781889?v=4&s=48\" width=\"48\" height=\"48\" alt=\"Takhoffman\" title=\"Takhoffman\"/></a> <a href=\"https://github.com/sebslight\"><img src=\"https://avatars.githubusercontent.com/u/19554889?v=4&s=48\" width=\"48\" height=\"48\" alt=\"sebslight\" title=\"sebslight\"/></a> <a href=\"https://github.com/tyler6204\"><img src=\"https://avatars.githubusercontent.com/u/64381258?v=4&s=48\" width=\"48\" height=\"48\" alt=\"tyler6204\" title=\"tyler6204\"/></a> <a href=\"https://github.com/quotentiroler\"><img src=\"https://avatars.githubusercontent.com/u/40643627?v=4&s=48\" width=\"48\" height=\"48\" alt=\"quotentiroler\" title=\"quotentiroler\"/></a> <a href=\"https://github.com/VeriteIgiraneza\"><img src=\"https://avatars.githubusercontent.com/u/69280208?v=4&s=48\" width=\"48\" height=\"48\" alt=\"Verite Igiraneza\" title=\"Verite Igiraneza\"/></a>\n  <a hre",
+    "package.json": "{\n  \"name\": \"openclaw\",\n  \"version\": \"2026.2.26\",\n  \"description\": \"Multi-channel AI gateway with extensible messaging integrations\",\n  \"keywords\": [],\n  \"homepage\": \"https://github.com/openclaw/openclaw#readme\",\n  \"bugs\": {\n    \"url\": \"https://github.com/openclaw/openclaw/issues\"\n  },\n  \"license\": \"MIT\",\n  \"author\": \"\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/openclaw/openclaw.git\"\n  },\n  \"bin\": {\n    \"openclaw\": \"openclaw.mjs\"\n  },\n  \"directories\": {\n    \"doc\": \"docs\",\n    \"test\": \"test\"\n  },\n  \"files\": [\n    \"CHANGELOG.md\",\n    \"LICENSE\",\n    \"openclaw.mjs\",\n    \"README-header.png\",\n    \"README.md\",\n    \"assets/\",\n    \"dist/\",\n    \"docs/\",\n    \"extensions/\",\n    \"skills/\"\n  ],\n  \"type\": \"module\",\n  \"main\": \"dist/index.js\",\n  \"exports\": {\n    \".\": \"./dist/index.js\",\n    \"./plugin-sdk\": {\n      \"types\": \"./dist/plugin-sdk/index.d.ts\",\n      \"default\": \"./dist/plugin-sdk/index.js\"\n    },\n    \"./plugin-sdk/account-id\": {\n      \"types\": \"./dist/plugin-sdk/account-id.d.ts\",\n      \"default\": \"./dist/plugin-sdk/account-id.js\"\n    },\n    \"./cli-entry\": \"./openclaw.mjs\"\n  },\n  \"scripts\": {\n    \"android:assemble\": \"cd apps/android && ./gradlew :app:assembleDebug\",\n    \"android:install\": \"cd apps/android && ./gradlew :app:installDebug\",\n    \"android:run\": \"cd apps/android && ./gradlew :app:installDebug && adb shell am start -n ai.openclaw.android/.MainActivity\",\n    \"android:test\": \"cd apps/android && ./gradlew :app:testDebugUnitTest\",\n    \"build\": \"pnpm canvas:a2ui:bundle && tsdown && pnpm build:plugin-sdk:dts && node --import tsx scripts/write-plugin-sdk-entry-dts.ts && node --import tsx scripts/canvas-a2ui-copy.ts && node --import tsx scripts/copy-hook-metadata.ts && node --import tsx scripts/copy-export-html-templates.ts && node --import tsx scripts/write-build-info.ts && node --import tsx scripts/write-cli-compat.ts\",\n    \"build:plugin-sdk:dts\": \"tsc -p tsconfig.plugin-sdk.dts.json\",\n    \"canvas:a2ui:bundle\": \"bash scripts/bundle-a2ui.sh\",\n    \"check\": \"pnpm format:check && pnpm tsgo && pnpm lint && pnpm lint:tmp:no-random-messaging && pnpm lint:tmp:channel-agnostic-boundaries && pnpm lint:tmp:no-raw-channel-fetch && pnpm lint:auth:no-pairing-store-group && pnpm lint:auth:pairing-account-scope && pnpm check:host-env-policy:swift\",\n    \"check:docs\": \"pnpm format:docs:check && pnpm lint:docs && pnpm docs:check-links\",\n    \"check:host-env-policy:swift\": \"node scripts/generate-host-env-security-policy-swift.mjs --check\",\n    \"check:loc\": \"node --import tsx scripts/check-ts-max-loc.ts --max 500\",\n    \"deadcode:ci\": \"pnpm deadcode:report:ci:knip && pnpm deadcode:report:ci:ts-prune && pnpm deadcode:report:ci:ts-unused\",\n    \"deadcode:knip\": \"pnpm dlx knip --no-progress\",\n    \"deadcode:report\": \"pnpm deadcode:knip; pnpm deadcode:ts-prune; pnpm deadcode:ts-unused\",\n    \"deadcode:report:ci:knip\": \"mkdir -p .artifacts/deadcode && pnpm deadcode:knip > .artifacts/deadcode/knip.txt 2>&1 || true\",\n    \"deadcode:report:ci:ts-prune\": \"mkdir -p .artifacts/deadcode && pnpm deadcode:ts-prune > .artifacts/deadcode/ts-prune.txt 2>&1 || true\",\n    \"deadcode:report:ci:ts-unused\": \"mkdir -p .artifacts/deadcode && pnpm deadcode:ts-unused > .artifacts/deadcode/ts-unused-exports.txt 2>&1 || true\",\n    \"deadcode:ts-prune\": \"pnpm dlx ts-prune src extensions scripts\",\n    \"deadcode:ts-unused\": \"pnpm dlx ts-unused-exports tsconfig.json --ignoreTestFiles --exitWithCount\",\n    \"dev\": \"node scripts/run-node.mjs\",\n    \"docs:bin\": \"node scripts/build-docs-list.mjs\",\n    \"docs:check-links\": \"node scripts/docs-link-audit.mjs\",\n    \"docs:dev\": \"cd docs && mint dev\",\n    \"docs:list\": \"node scripts/docs-list.js\",\n    \"docs:spellcheck\": \"bash scripts/docs-spellcheck.sh\",\n    \"docs:spellcheck:fix\": \"bash scripts/docs-spellcheck.sh --write\",\n    \"format\": \"oxfmt --write\",\n    \"format:all\": \"pnpm format && pnpm format:swift\",\n    \"format:check\": \"oxfmt --check\",\n    \"format:diff\": \"oxfmt --write && git --no-pager diff\",\n    \"format:docs\": \"git ls-files 'docs/**/*.md' 'docs/**/*.mdx' 'README.md' | xargs oxfmt --write\",\n    \"format:docs:check\": \"git ls-files 'docs/**/*.md' 'docs/**/*.mdx' 'README.md' | xargs oxfmt --check\",\n    \"format:fix\": \"oxfmt --write\",\n    \"format:swift\": \"swiftformat --lint --config .swiftformat apps/macos/Sources apps/ios/Sources apps/shared/OpenClawKit/Sources\",\n    \"gateway:dev\": \"OPENCLAW_SKIP_CHANNELS=1 CLAWDBOT_SKIP_CHANNELS=1 node scripts/run-node.mjs --dev gateway\",\n    \"gateway:dev:reset\": \"OPENCLAW_SKIP_CHANNELS=1 CLAWDBOT_SKIP_CHANNELS=1 node scripts/run-node.mjs --dev gateway --reset\",\n    \"gateway:watch\": \"node scripts/watch-node.mjs gateway --force\",\n    \"gen:host-env-policy:swift\": \"node scripts/generate-host-env-security-policy-swift.mjs --write\",\n    \"ghsa:patch\": \"node scripts/ghsa-patch.mjs\",\n    \"ios:build\": \"bash -lc './scripts/ios-configure-signing.sh && cd apps/ios && xcodegen generate && xcodebuild -project OpenClaw.xcodeproj -scheme OpenClaw -destination \\\"${IOS_DEST:-platform=iOS Simulator,name=iPhone 17}\\\" -configuration Debug build'\",\n    \"ios:gen\": \"bash -lc './scripts/ios-configure-signing.sh && cd apps/ios && xcodegen generate'\",\n    \"ios:open\": \"bash -lc './scripts/ios-configure-signing.sh && cd apps/ios && xcodegen generate && open OpenClaw.xcodeproj'\",\n    \"ios:run\": \"bash -lc './scripts/ios-configure-signing.sh && cd apps/ios && xcodegen generate && xcodebuild -project OpenClaw.xcodeproj -scheme OpenClaw -destination \\\"${IOS_DEST:-platform=iOS Simulator,name=iPhone 17}\\\" -configuration Debug build && xcrun simctl boot \\\"${IOS_SIM:-iPhone 17}\\\" || true && xcrun simctl launch booted ai.openclaw.ios'\",\n    \"lint\": \"oxlint --type-aware\",\n    \"lint:all\": \"pnpm lint && pnpm lint:swift\",\n    \"lint:auth:no-pairing-store-group\": \"node scripts/check-no-pairing-store-group-auth.mjs\",\n    \"lint:auth:pairing-account-scope\": \"node scripts/check-pairing-account-scope.mjs\",\n    \"lint:docs\": \"pnpm dlx markdownlint-cli2\",\n    \"lint:docs:fix\": \"pnpm dlx markdownlint-cli2 --fix\",\n    \"lint:fix\": \"oxlint --type-aware --fix && pnpm format\",\n    \"lint:swift\": \"swiftlint lint --config .swiftlint.yml && (cd apps/ios && swiftlint lint --config .swiftlint.yml)\",\n    \"lint:tmp:channel-agnostic-boundaries\": \"node scripts/check-channel-agnostic-boundaries.mjs\",\n    \"lint:tmp:no-random-messaging\": \"node scripts/check-no-random-messaging-tmp.mjs\",\n    \"lint:tmp:no-raw-channel-fetch\": \"node scripts/check-no-raw-channel-fetch.mjs\",\n    \"lint:ui:no-raw-window-open\": \"node scripts/check-no-raw-window-open.mjs\",\n    \"mac:open\": \"open dist/OpenClaw.app\",\n    \"mac:package\": \"bash scripts/package-mac-app.sh\",\n    \"mac:restart\": \"bash scripts/restart-mac.sh\",\n    \"moltbot:rpc\": \"node scripts/run-node.mjs agent --mode rpc --json\",\n    \"openclaw\": \"node scripts/run-node.mjs\",\n    \"openclaw:rpc\": \"node scripts/run-node.mjs agent --mode rpc --json\",\n    \"plugins:sync\": \"node --import tsx scripts/sync-plugin-versions.ts\",\n    \"prepack\": \"pnpm build && pnpm ui:build\",\n    \"prepare\": \"command -v git >/dev/null 2>&1 && git rev-parse --is-inside-work-tree >/dev/null 2>&1 && git config core.hooksPath git-hooks || exit 0\",\n    \"protocol:check\": \"pnpm protocol:gen && pnpm protocol:gen:swift && git diff --exit-code -- dist/protocol.schema.json apps/macos/Sources/OpenClawProtocol/GatewayModels.swift\",\n    \"protocol:gen\": \"node --import tsx scripts/protocol-gen.ts\",\n    \"protocol:gen:swift\": \"node --import tsx scripts/protocol-gen-swift.ts\",\n    \"release:check\": \"node --import tsx scripts/release-check.ts\",\n    \"start\": \"node scripts/run-node.mjs\",\n    \"test\": \"node scripts/test-parallel.mjs\",\n    \"test:all\": \"pnpm lint && pnpm build && pnpm test && pnpm test:e2e && pnpm test:live && pnpm test:docker:all\",\n    \"test:coverage\": \"vitest run --config vitest.unit.config.ts --coverage\",\n    \"test:docker:all\": \"pnpm test:docker:live-models && pnpm test:docker:live-gateway && pnpm test:docker:onboard && pnpm test:docker:gateway-network && pnpm test:docker:qr && pnpm test:docker:doctor-switch && pnpm test:docker:plugins && pnpm test:docker:cleanup\",\n    \"test:docker:cleanup\": \"bash scripts/test-cleanup-docker.sh\",\n    \"test:docker:doctor-switch\": \"bash scripts/e2e/doctor-install-switch-docker.sh\",\n    \"test:docker:gateway-network\": \"bash scripts/e2e/gateway-network-docker.sh\",\n    \"test:docker:live-gateway\": \"bash scripts/test-live-gateway-models-docker.sh\",\n    \"test:docker:live-models\": \"bash scripts/test-live-models-docker.sh\",\n    \"test:docker:onboard\": \"bash scripts/e2e/onboard-docker.sh\",\n    \"test:docker:plugins\": \"bash scripts/e2e/plugins-docker.sh\",\n    \"test:docker:qr\": \"bash scripts/e2e/qr-import-docker.sh\",\n    \"test:e2e\": \"vitest run --config vitest.e2e.config.ts\",\n    \"test:fast\": \"vitest run --config vitest.unit.config.ts\",\n    \"test:force\": \"node --import tsx scripts/test-force.ts\",\n    \"test:install:e2e\": \"bash scripts/test-install-sh-e2e-docker.sh\",\n    \"test:install:e2e:anthropic\": \"OPENCLAW_E2E_MODELS=anthropic CLAWDBOT_E2E_MODELS=anthropic bash scripts/test-install-sh-e2e-docker.sh\",\n    \"test:install:e2e:openai\": \"OPENCLAW_E2E_MODELS=openai CLAWDBOT_E2E_MODELS=openai bash scripts/test-install-sh-e2e-docker.sh\",\n    \"test:install:smoke\": \"bash scripts/test-install-sh-docker.sh\",\n    \"test:live\": \"OPENCLAW_LIVE_TEST=1 CLAWDBOT_LIVE_TEST=1 vitest run --config vitest.live.config.ts\",\n    \"test:macmini\": \"OPENCLAW_TEST_VM_FORKS=0 OPENCLAW_TEST_PROFILE=serial node scripts/test-parallel.mjs\",\n    \"test:sectriage\": \"pnpm exec vitest run --config vitest.gateway.config.ts && vitest run --config vitest.unit.config.ts --exclude src/daemon/launchd.integration.test.ts --exclude src/process/exec.test.ts\",\n    \"test:ui\": \"pnpm lint:ui:no-raw-window-open && pnpm --dir ui test\",\n    \"test:voicecall:closedloop\": \"vitest run extensions/voice-call/src/manager.test.ts extensions/voice-call/src/media-stream.test.ts src/plugins/voice-call.plugin.test.ts --maxWorkers=1\",\n    \"test:watch\": \"vitest\",\n    \"tui\": \"node scripts/run-node.mjs tui\",\n    \"tui:dev\": \"OPENCLAW_PROFILE=dev CLAWDBOT_PROFILE=dev node scripts/run-node.mjs --dev tui\",\n    \"ui:build\": \"node scripts/ui.js build\",\n    \"ui:dev\": \"node scripts/ui.js dev\",\n    \"ui:install\": \"node scripts/ui.js install\"\n  },\n  \"dependencies\": {\n    \"@agentclientprotocol/sdk\": \"0.14.1\",\n    \"@aws-sdk/client-bedrock\": \"^3.998.0\",\n    \"@buape/carbon\": \"0.0.0-beta-20260216184201\",\n    \"@clack/prompts\": \"^1.0.1\",\n    \"@discordjs/voice\": \"^0.19.0\",\n    \"@grammyjs/runner\": \"^2.0.3\",\n    \"@grammyjs/transformer-throttler\": \"^1.2.1\",\n    \"@homebridge/ciao\": \"^1.3.5\",\n    \"@larksuiteoapi/node-sdk\": \"^1.59.0\",\n    \"@line/bot-sdk\": \"^10.6.0\",\n    \"@lydell/node-pty\": \"1.2.0-beta.3\",\n    \"@mariozechner/pi-agent-core\": \"0.55.1\",\n    \"@mariozechner/pi-ai\": \"0.55.1\",\n    \"@mariozechner/pi-coding-agent\": \"0.55.1\",\n    \"@mariozechner/pi-tui\": \"0.55.1\",\n    \"@mozilla/readability\": \"^0.6.0\",\n    \"@sinclair/typebox\": \"0.34.48\",\n    \"@slack/bolt\": \"^4.6.0\",\n    \"@slack/web-api\": \"^7.14.1\",\n    \"@snazzah/davey\": \"^0.1.9\",\n    \"@whiskeysockets/baileys\": \"7.0.0-rc.9\",\n    \"ajv\": \"^8.18.0\",\n    \"chalk\": \"^5.6.2\",\n    \"chokidar\": \"^5.0.0\",\n    \"cli-highlight\": \"^2.1.11\",\n    \"commander\": \"^14.0.3\",\n    \"croner\": \"^10.0.1\",\n    \"discord-api-types\": \"^0.38.40\",\n    \"dotenv\": \"^17.3.1\",\n    \"express\": \"^5.2.1\",\n    \"file-type\": \"^21.3.0\",\n    \"grammy\": \"^1.40.1\",\n    \"https-proxy-agent\": \"^7.0.6\",\n    \"ipaddr.js\": \"^2.3.0\",\n    \"jiti\": \"^2.6.1\",\n    \"json5\": \"^2.2.3\",\n    \"jszip\": \"^3.10.1\",\n    \"linkedom\": \"^0.18.12\",\n    \"long\": \"^5.3.2\",\n    \"markdown-it\": \"^14.1.1\",\n    \"node-edge-tts\": \"^1.2.10\",\n    \"opusscript\": \"^0.1.1\",\n    \"osc-progress\": \"^0.3.0\",\n    \"pdfjs-dist\": \"^5.4.624\",\n    \"playwright-core\": \"1.58.2\",\n    \"qrcode-terminal\": \"^0.12.0\",\n    \"sharp\": \"^0.34.5\",\n    \"sqlite-vec\": \"0.1.7-alpha.2\",\n    \"tar\": \"7.5.9\",\n    \"tslog\": \"^4.10.2\",\n    \"undici\": \"^7.22.0\",\n    \"ws\": \"^8.19.0\",\n    \"yaml\": \"^2.8.2\",\n    \"zod\": \"^4.3.6\"\n  },\n  \"devDependencies\": {\n    \"@grammyjs/types\": \"^3.24.0\",\n    \"@lit-labs/signals\": \"^0.2.0\",\n    \"@lit/context\": \"^1.1.6\",\n    \"@types/express\": \"^5.0.6\",\n    \"@types/markdown-it\": \"^14.1.2\",\n    \"@types/node\": \"^25.3.1\",\n    \"@types/qrcode-terminal\": \"^0.12.2\",\n    \"@types/ws\": \"^8.18.1\",\n    \"@typescript/native-preview\": \"7.0.0-dev.20260225.1\",\n    \"@vitest/coverage-v8\": \"^4.0.18\",\n    \"lit\": \"^3.3.2\",\n    \"oxfmt\": \"0.35.0\",\n    \"oxlint\": \"^1.50.0\",\n    \"oxlint-tsgolint\": \"^0.15.0\",\n    \"signal-utils\": \"0.21.1\",\n    \"tsdown\": \"^0.20.3\",\n    \"tsx\": \"^4.21.0\",\n    \"typescript\": \"^5.9.3\",\n    \"vitest\": \"^4.0.18\"\n  },\n  \"peerDependencies\": {\n    \"@napi-rs/canvas\": \"^0.1.89\",\n    \"node-llama-cpp\": \"3.15.1\"\n  },\n  \"optionalDependencies\": {\n    \"@discordjs/opus\": \"^0.10.0\"\n  },\n  \"engines\": {\n    \"node\": \">=22.12.0\"\n  },\n  \"packageManager\": \"pnpm@10.23.0\",\n  \"pnpm\": {\n    \"minimumReleaseAge\": 2880,\n    \"overrides\": {\n      \"hono\": \"4.11.10\",\n      \"fast-xml-parser\": \"5.3.6\",\n      \"request\": \"npm:@cypress/request@3.0.10\",\n      \"request-promise\": \"npm:@cypress/request-promise@5.0.0\",\n      \"form-data\": \"2.5.4\",\n      \"minimatch\": \"10.2.4\",\n      \"qs\": \"6.14.2\",\n      \"@sinclair/typebox\": \"0.34.48\",\n      \"tar\": \"7.5.9\",\n      \"tough-cookie\": \"4.1.3\"\n    },\n    \"onlyBuiltDependencies\": [\n      \"@lydell/node-pty\",\n      \"@matrix-org/matrix-sdk-crypto-nodejs\",\n      \"@napi-rs/canvas\",\n      \"@whiskeysockets/baileys\",\n      \"authenticate-pam\",\n      \"esbuild\",\n      \"koffi\",\n      \"node-llama-cpp\",\n      \"protobufjs\",\n      \"sharp\"\n    ]\n  }\n}\n",
+    "Dockerfile": "FROM node:22-bookworm@sha256:cd7bcd2e7a1e6f72052feb023c7f6b722205d3fcab7bbcbd2d1bfdab10b1e935\n\n# Install Bun (required for build scripts)\nRUN curl -fsSL https://bun.sh/install | bash\nENV PATH=\"/root/.bun/bin:${PATH}\"\n\nRUN corepack enable\n\nWORKDIR /app\nRUN chown node:node /app\n\nARG OPENCLAW_DOCKER_APT_PACKAGES=\"\"\nRUN if [ -n \"$OPENCLAW_DOCKER_APT_PACKAGES\" ]; then \\\n      apt-get update && \\\n      DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends $OPENCLAW_DOCKER_APT_PACKAGES && \\\n      apt-get clean && \\\n      rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*; \\\n    fi\n\nCOPY --chown=node:node package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./\nCOPY --chown=node:node ui/package.json ./ui/package.json\nCOPY --chown=node:node patches ./patches\nCOPY --chown=node:node scripts ./scripts\n\nUSER node\n# Reduce OOM risk on low-memory hosts during dependency installation.\n# Docker builds on small VMs may otherwise fail with \"Killed\" (exit 137).\nRUN NODE_OPTIONS=--max-old-space-size=2048 pnpm install --frozen-lockfile\n\n# Optionally install Chromium and Xvfb for browser automation.\n# Build with: docker build --build-arg OPENCLAW_INSTALL_BROWSER=1 ...\n# Adds ~300MB but eliminates the 60-90s Playwright install on every container start.\n# Must run after pnpm install so playwright-core is available in node_modules.\nUSER root\nARG OPENCLAW_INSTALL_BROWSER=\"\"\nRUN if [ -n \"$OPENCLAW_INSTALL_BROWSER\" ]; then \\\n      apt-get update && \\\n      DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends xvfb && \\\n      mkdir -p /home/node/.cache/ms-playwright && \\\n      PLAYWRIGHT_BROWSERS_PATH=/home/node/.cache/ms-playwright \\\n      node /app/node_modules/playwright-core/cli.js install --with-deps chromium && \\\n      chown -R node:node /home/node/.cache/ms-playwright && \\\n      apt-get clean && \\\n      rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*; \\\n    fi\n\nUSER node\nCOPY --chown=node:node . .\nRUN pnpm build\n# Force pnpm for UI build (Bun may fail on ARM/Synology architectures)\nENV OPENCLAW_PREFER_PNPM=1\nRUN pnpm ui:build\n\nENV NODE_ENV=production\n\n# Security hardening: Run as non-root user\n# The node:22-bookworm image includes a 'node' user (uid 1000)\n# This reduces the attack surface by preventing container escape via root privileges\nUSER node\n\n# Start gateway server with default config.\n# Binds to loopback (127.0.0.1) by default for security.\n#\n# For container platforms requiring external health checks:\n#   1. Set OPENCLAW_GATEWAY_TOKEN or OPENCLAW_GATEWAY_PASSWORD env var\n#   2. Override CMD: [\"node\",\"openclaw.mjs\",\"gateway\",\"--allow-unconfigured\",\"--bind\",\"lan\"]\nCMD [\"node\", \"openclaw.mjs\", \"gateway\", \"--allow-unconfigured\"]\n",
+    "docker-compose.yml": "services:\n  openclaw-gateway:\n    image: ${OPENCLAW_IMAGE:-openclaw:local}\n    environment:\n      HOME: /home/node\n      TERM: xterm-256color\n      OPENCLAW_GATEWAY_TOKEN: ${OPENCLAW_GATEWAY_TOKEN}\n      CLAUDE_AI_SESSION_KEY: ${CLAUDE_AI_SESSION_KEY}\n      CLAUDE_WEB_SESSION_KEY: ${CLAUDE_WEB_SESSION_KEY}\n      CLAUDE_WEB_COOKIE: ${CLAUDE_WEB_COOKIE}\n    volumes:\n      - ${OPENCLAW_CONFIG_DIR}:/home/node/.openclaw\n      - ${OPENCLAW_WORKSPACE_DIR}:/home/node/.openclaw/workspace\n    ports:\n      - \"${OPENCLAW_GATEWAY_PORT:-18789}:18789\"\n      - \"${OPENCLAW_BRIDGE_PORT:-18790}:18790\"\n    init: true\n    restart: unless-stopped\n    command:\n      [\n        \"node\",\n        \"dist/index.js\",\n        \"gateway\",\n        \"--bind\",\n        \"${OPENCLAW_GATEWAY_BIND:-lan}\",\n        \"--port\",\n        \"18789\",\n      ]\n\n  openclaw-cli:\n    image: ${OPENCLAW_IMAGE:-openclaw:local}\n    environment:\n      HOME: /home/node\n      TERM: xterm-256color\n      OPENCLAW_GATEWAY_TOKEN: ${OPENCLAW_GATEWAY_TOKEN}\n      BROWSER: echo\n      CLAUDE_AI_SESSION_KEY: ${CLAUDE_AI_SESSION_KEY}\n      CLAUDE_WEB_SESSION_KEY: ${CLAUDE_WEB_SESSION_KEY}\n      CLAUDE_WEB_COOKIE: ${CLAUDE_WEB_COOKIE}\n    volumes:\n      - ${OPENCLAW_CONFIG_DIR}:/home/node/.openclaw\n      - ${OPENCLAW_WORKSPACE_DIR}:/home/node/.openclaw/workspace\n    stdin_open: true\n    tty: true\n    init: true\n    entrypoint: [\"node\", \"dist/index.js\"]\n",
+    "pnpm-workspace.yaml": "packages:\n  - .\n  - ui\n  - packages/*\n  - extensions/*\n\nonlyBuiltDependencies:\n  - \"@lydell/node-pty\"\n  - \"@matrix-org/matrix-sdk-crypto-nodejs\"\n  - \"@napi-rs/canvas\"\n  - \"@whiskeysockets/baileys\"\n  - authenticate-pam\n  - esbuild\n  - node-llama-cpp\n  - protobufjs\n  - sharp\n",
+    "pyproject.toml": "[tool.ruff]\ntarget-version = \"py310\"\nline-length = 100\n\n[tool.ruff.lint]\nselect = [\"E9\", \"F63\", \"F7\", \"F82\", \"I\"]\n\n[tool.pytest.ini_options]\ntestpaths = [\"skills\"]\npython_files = [\"test_*.py\"]\n"
+  }
+}

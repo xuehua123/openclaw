@@ -1,0 +1,50 @@
+﻿[
+    {
+        "category_label":  "official",
+        "count":  6,
+        "avg_value":  77,
+        "avg_risk":  23
+    },
+    {
+        "category_label":  "alternatives-forks",
+        "count":  9,
+        "avg_value":  65,
+        "avg_risk":  40
+    },
+    {
+        "category_label":  "plugins-skills",
+        "count":  74,
+        "avg_value":  64,
+        "avg_risk":  30
+    },
+    {
+        "category_label":  "panel-ui",
+        "count":  38,
+        "avg_value":  63,
+        "avg_risk":  30
+    },
+    {
+        "category_label":  "deployment",
+        "count":  20,
+        "avg_value":  63,
+        "avg_risk":  31
+    },
+    {
+        "category_label":  "security",
+        "count":  37,
+        "avg_value":  62,
+        "avg_risk":  31
+    },
+    {
+        "category_label":  "other",
+        "count":  48,
+        "avg_value":  61,
+        "avg_risk":  36
+    },
+    {
+        "category_label":  "docs-cases",
+        "count":  6,
+        "avg_value":  56,
+        "avg_risk":  34
+    }
+]
