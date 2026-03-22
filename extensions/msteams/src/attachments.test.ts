@@ -1,5 +1,6 @@
-import type { PluginRuntime, SsrFPolicy } from "openclaw/plugin-sdk";
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import { createPluginRuntimeMock } from "../../../test/helpers/extensions/plugin-runtime-mock.js";
+import type { PluginRuntime, SsrFPolicy } from "../runtime-api.js";
 import {
   buildMSTeamsAttachmentPlaceholder,
   buildMSTeamsGraphMessageUrls,
@@ -46,7 +47,9 @@ type RemoteMediaFetchParams = {
 
 const detectMimeMock = vi.fn(async () => CONTENT_TYPE_IMAGE_PNG);
 const saveMediaBufferMock = vi.fn(async () => ({
+  id: "saved.png",
   path: SAVED_PNG_PATH,
+  size: Buffer.byteLength(PNG_BUFFER),
   contentType: CONTENT_TYPE_IMAGE_PNG,
 }));
 const readRemoteMediaResponse = async (
@@ -85,14 +88,17 @@ function isUrlAllowedBySsrfPolicy(url: string, policy?: SsrFPolicy): boolean {
   );
 }
 
-const fetchRemoteMediaMock = vi.fn(async (params: RemoteMediaFetchParams) => {
+async function fetchRemoteMediaWithRedirects(
+  params: RemoteMediaFetchParams,
+  requestInit?: RequestInit,
+) {
   const fetchFn = params.fetchImpl ?? fetch;
   let currentUrl = params.url;
   for (let i = 0; i <= MAX_REDIRECT_HOPS; i += 1) {
     if (!isUrlAllowedBySsrfPolicy(currentUrl, params.ssrfPolicy)) {
       throw new Error(`Blocked hostname (not in allowlist): ${currentUrl}`);
     }
-    const res = await fetchFn(currentUrl, { redirect: "manual" });
+    const res = await fetchFn(currentUrl, { redirect: "manual", ...requestInit });
     if (REDIRECT_STATUS_CODES.includes(res.status)) {
       const location = res.headers.get("location");
       if (!location) {
@@ -104,21 +110,23 @@ const fetchRemoteMediaMock = vi.fn(async (params: RemoteMediaFetchParams) => {
     return readRemoteMediaResponse(res, params);
   }
   throw new Error("too many redirects");
+}
+
+const fetchRemoteMediaMock = vi.fn(async (params: RemoteMediaFetchParams) => {
+  return await fetchRemoteMediaWithRedirects(params);
 });
 
-const runtimeStub = {
+const runtimeStub: PluginRuntime = createPluginRuntimeMock({
   media: {
-    detectMime: detectMimeMock as unknown as PluginRuntime["media"]["detectMime"],
+    detectMime: detectMimeMock,
   },
   channel: {
     media: {
-      fetchRemoteMedia:
-        fetchRemoteMediaMock as unknown as PluginRuntime["channel"]["media"]["fetchRemoteMedia"],
-      saveMediaBuffer:
-        saveMediaBufferMock as unknown as PluginRuntime["channel"]["media"]["saveMediaBuffer"],
+      fetchRemoteMedia: fetchRemoteMediaMock,
+      saveMediaBuffer: saveMediaBufferMock,
     },
   },
-} as unknown as PluginRuntime;
+});
 
 type DownloadAttachmentsParams = Parameters<typeof downloadMSTeamsAttachments>[0];
 type DownloadGraphMediaParams = Parameters<typeof downloadMSTeamsGraphMedia>[0];
@@ -164,7 +172,13 @@ const IMAGE_ATTACHMENT = { contentType: CONTENT_TYPE_IMAGE_PNG, contentUrl: TEST
 const PNG_BUFFER = Buffer.from("png");
 const PNG_BASE64 = PNG_BUFFER.toString("base64");
 const PDF_BUFFER = Buffer.from("pdf");
-const createTokenProvider = () => ({ getAccessToken: vi.fn(async () => "token") });
+const createTokenProvider = (
+  tokenOrResolver: string | ((scope: string) => string | Promise<string>) = "token",
+) => ({
+  getAccessToken: vi.fn(async (scope: string) =>
+    typeof tokenOrResolver === "function" ? await tokenOrResolver(scope) : tokenOrResolver,
+  ),
+});
 const asSingleItemArray = <T>(value: T) => [value];
 const withLabel = <T extends object>(label: string, fields: T): T & LabeledCase => ({
   label,
@@ -300,11 +314,14 @@ const expectMediaBufferSaved = () => {
 };
 const expectFirstMedia = (media: DownloadedMedia, expected: DownloadedMediaExpectation) => {
   const first = media[0];
+  if (!first) {
+    throw new Error("expected one downloaded media item");
+  }
   if (expected.path !== undefined) {
-    expect(first?.path).toBe(expected.path);
+    expect(first.path).toBe(expected.path);
   }
   if (expected.placeholder !== undefined) {
-    expect(first?.placeholder).toBe(expected.placeholder);
+    expect(first.placeholder).toBe(expected.placeholder);
   }
 };
 const expectMSTeamsMediaPayload = (
@@ -316,6 +333,21 @@ const expectMSTeamsMediaPayload = (
   expect(payload.MediaPaths).toEqual(expected.paths);
   expect(payload.MediaUrls).toEqual(expected.paths);
   expect(payload.MediaTypes).toEqual(expected.types);
+};
+const requireFetchCall = (
+  fetchMock: { mock: { calls: unknown[][] } },
+  index: number,
+): [string, RequestInit | undefined] => {
+  const call = fetchMock.mock.calls[index];
+  if (!call) {
+    throw new Error(`expected fetch call ${index + 1}`);
+  }
+  return [String(call[0]), call[1] as RequestInit | undefined];
+};
+const expectGraphMessagePath = (url: string, expectedPath: string) => {
+  const parsed = new URL(url);
+  expect(parsed.origin).toBe(`https://${GRAPH_HOST}`);
+  expect(parsed.pathname).toBe(`/v1.0${expectedPath}`);
 };
 type AttachmentPlaceholderCase = LabeledCase & {
   attachments: AttachmentPlaceholderInput;
@@ -345,7 +377,7 @@ type AttachmentAuthRetryCase = LabeledCase & {
 };
 type GraphUrlExpectationCase = LabeledCase & {
   params: GraphMessageUrlParams;
-  expectedPath: string;
+  expectedPaths: string[];
 };
 type ChannelGraphUrlCaseParams = {
   messageId: string;
@@ -434,7 +466,9 @@ const ATTACHMENT_DOWNLOAD_SUCCESS_CASES: AttachmentDownloadSuccessCase[] = [
     beforeDownload: () => {
       detectMimeMock.mockResolvedValueOnce(CONTENT_TYPE_APPLICATION_PDF);
       saveMediaBufferMock.mockResolvedValueOnce({
+        id: "saved.pdf",
         path: SAVED_PDF_PATH,
+        size: Buffer.byteLength(PDF_BUFFER),
         contentType: CONTENT_TYPE_APPLICATION_PDF,
       });
     },
@@ -506,7 +540,12 @@ const GRAPH_URL_EXPECTATION_CASES: GraphUrlExpectationCase[] = [
   ...CHANNEL_GRAPH_URL_CASES.map<GraphUrlExpectationCase>(({ label, ...params }) =>
     withLabel(label, {
       params: createChannelGraphMessageUrlParams(params),
-      expectedPath: buildExpectedChannelMessagePath(params),
+      expectedPaths: params.replyToId
+        ? [
+            buildExpectedChannelMessagePath(params),
+            buildExpectedChannelMessagePath({ messageId: params.messageId }),
+          ]
+        : [buildExpectedChannelMessagePath(params)],
     }),
   ),
   withLabel("builds chat message urls", {
@@ -515,7 +554,7 @@ const GRAPH_URL_EXPECTATION_CASES: GraphUrlExpectationCase[] = [
       conversationId: "19:chat@thread.v2",
       messageId: "456",
     },
-    expectedPath: "/chats/19%3Achat%40thread.v2/messages/456",
+    expectedPaths: ["/chats/19%3Achat%40thread.v2/messages/456"],
   }),
 ];
 
@@ -694,6 +733,117 @@ describe("msteams attachments", () => {
       runAttachmentAuthRetryCase,
     );
 
+    it("preserves auth fallback when dispatcher-mode fetch returns a redirect", async () => {
+      const redirectedUrl = createTestUrl("redirected.png");
+      const tokenProvider = createTokenProvider();
+      const fetchMock = vi.fn(async (url: string, opts?: RequestInit) => {
+        const hasAuth = Boolean(new Headers(opts?.headers).get("Authorization"));
+        if (url === TEST_URL_IMAGE) {
+          return hasAuth
+            ? createRedirectResponse(redirectedUrl)
+            : createTextResponse("unauthorized", 401);
+        }
+        if (url === redirectedUrl) {
+          return createBufferResponse(PNG_BUFFER, CONTENT_TYPE_IMAGE_PNG);
+        }
+        return createNotFoundResponse();
+      });
+
+      fetchRemoteMediaMock.mockImplementationOnce(async (params) => {
+        return await fetchRemoteMediaWithRedirects(params, {
+          dispatcher: {},
+        } as RequestInit);
+      });
+
+      const media = await downloadAttachmentsWithFetch(
+        createImageAttachments(TEST_URL_IMAGE),
+        fetchMock,
+        { tokenProvider, authAllowHosts: [TEST_HOST] },
+      );
+
+      expectAttachmentMediaLength(media, 1);
+      expect(tokenProvider.getAccessToken).toHaveBeenCalledOnce();
+      expect(fetchMock).toHaveBeenCalledTimes(3);
+      const [firstUrl, firstInit] = requireFetchCall(fetchMock, 0);
+      const [secondUrl, secondInit] = requireFetchCall(fetchMock, 1);
+      const [thirdUrl, thirdInit] = requireFetchCall(fetchMock, 2);
+      expect(firstUrl).toBe(TEST_URL_IMAGE);
+      expect(new Headers(firstInit?.headers).get("Authorization")).toBeNull();
+      expect(secondUrl).toBe(TEST_URL_IMAGE);
+      expect(new Headers(secondInit?.headers).get("Authorization")).toBe("Bearer token");
+      expect(thirdUrl).toBe(redirectedUrl);
+      expect(new Headers(thirdInit?.headers).get("Authorization")).toBeNull();
+    });
+
+    it("continues scope fallback after non-auth failure and succeeds on later scope", async () => {
+      let authAttempt = 0;
+      const tokenProvider = createTokenProvider((scope) => `token:${scope}`);
+      const fetchMock = vi.fn(async (_url: string, opts?: RequestInit) => {
+        const auth = new Headers(opts?.headers).get("Authorization");
+        if (!auth) {
+          return createTextResponse("unauthorized", 401);
+        }
+        authAttempt += 1;
+        if (authAttempt === 1) {
+          return createTextResponse("upstream transient", 500);
+        }
+        return createBufferResponse(PNG_BUFFER, CONTENT_TYPE_IMAGE_PNG);
+      });
+
+      const media = await downloadAttachmentsWithFetch(
+        createImageAttachments(TEST_URL_IMAGE),
+        fetchMock,
+        { tokenProvider, authAllowHosts: [TEST_HOST] },
+      );
+
+      expectAttachmentMediaLength(media, 1);
+      expect(tokenProvider.getAccessToken).toHaveBeenCalledTimes(2);
+    });
+
+    it("does not forward Authorization to redirects outside auth allowlist", async () => {
+      const tokenProvider = createTokenProvider("top-secret-token");
+      const graphFileUrl = createUrlForHost(GRAPH_HOST, "file");
+      const seen: Array<{ url: string; auth: string }> = [];
+      const fetchMock = vi.fn(async (url: string, opts?: RequestInit) => {
+        const auth = new Headers(opts?.headers).get("Authorization") ?? "";
+        seen.push({ url, auth });
+        if (url === graphFileUrl && !auth) {
+          return new Response("unauthorized", { status: 401 });
+        }
+        if (url === graphFileUrl && auth) {
+          return new Response("", {
+            status: 302,
+            headers: { location: "https://attacker.azureedge.net/collect" },
+          });
+        }
+        if (url === "https://attacker.azureedge.net/collect") {
+          return new Response(Buffer.from("png"), {
+            status: 200,
+            headers: { "content-type": CONTENT_TYPE_IMAGE_PNG },
+          });
+        }
+        return createNotFoundResponse();
+      });
+
+      const media = await downloadMSTeamsAttachments(
+        buildDownloadParams([{ contentType: CONTENT_TYPE_IMAGE_PNG, contentUrl: graphFileUrl }], {
+          tokenProvider,
+          allowHosts: [GRAPH_HOST, AZUREEDGE_HOST],
+          authAllowHosts: [GRAPH_HOST],
+          fetchFn: asFetchFn(fetchMock),
+        }),
+      );
+
+      expectSingleMedia(media);
+      const redirected = seen.find(
+        (entry) => entry.url === "https://attacker.azureedge.net/collect",
+      );
+      if (!redirected) {
+        throw new Error("expected redirected Azure Edge fetch to be observed");
+      }
+      expect(redirected.auth).toBe("");
+    });
+
     it("skips urls outside the allowlist", async () => {
       const fetchMock = vi.fn();
       const media = await downloadAttachmentsWithFetch(
@@ -735,14 +885,66 @@ describe("msteams attachments", () => {
   });
 
   describe("buildMSTeamsGraphMessageUrls", () => {
-    it.each(GRAPH_URL_EXPECTATION_CASES)("$label", ({ params, expectedPath }) => {
+    it.each(GRAPH_URL_EXPECTATION_CASES)("$label", ({ params, expectedPaths }) => {
       const urls = buildMSTeamsGraphMessageUrls(params);
-      expect(urls[0]).toContain(expectedPath);
+      expect(urls).toHaveLength(expectedPaths.length);
+      urls.forEach((url, index) => {
+        const expectedPath = expectedPaths[index];
+        if (!expectedPath) {
+          throw new Error(`missing expected graph path ${index + 1}`);
+        }
+        expectGraphMessagePath(url, expectedPath);
+      });
     });
   });
 
   describe("downloadMSTeamsGraphMedia", () => {
     it.each<GraphMediaSuccessCase>(GRAPH_MEDIA_SUCCESS_CASES)("$label", runGraphMediaSuccessCase);
+
+    it("does not forward Authorization for SharePoint redirects outside auth allowlist", async () => {
+      const tokenProvider = createTokenProvider("top-secret-token");
+      const escapedUrl = "https://example.com/collect";
+      const seen: Array<{ url: string; auth: string }> = [];
+      const referenceAttachment = createReferenceAttachment();
+      const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+        const url = String(input);
+        const auth = new Headers(init?.headers).get("Authorization") ?? "";
+        seen.push({ url, auth });
+
+        if (url === DEFAULT_MESSAGE_URL) {
+          return createJsonResponse({ attachments: [referenceAttachment] });
+        }
+        if (url === `${DEFAULT_MESSAGE_URL}/hostedContents`) {
+          return createGraphCollectionResponse([]);
+        }
+        if (url === `${DEFAULT_MESSAGE_URL}/attachments`) {
+          return createGraphCollectionResponse([referenceAttachment]);
+        }
+        if (url.startsWith(GRAPH_SHARES_URL_PREFIX)) {
+          return createRedirectResponse(escapedUrl);
+        }
+        if (url === escapedUrl) {
+          return createPdfResponse();
+        }
+        return createNotFoundResponse();
+      });
+
+      const media = await downloadMSTeamsGraphMedia({
+        messageUrl: DEFAULT_MESSAGE_URL,
+        tokenProvider,
+        maxBytes: DEFAULT_MAX_BYTES,
+        allowHosts: [...DEFAULT_SHAREPOINT_ALLOW_HOSTS, "example.com"],
+        authAllowHosts: DEFAULT_SHAREPOINT_ALLOW_HOSTS,
+        fetchFn: asFetchFn(fetchMock),
+      });
+
+      expectAttachmentMediaLength(media.media, 1);
+      const redirected = seen.find((entry) => entry.url === escapedUrl);
+      if (!redirected) {
+        throw new Error("expected redirected SharePoint fetch to be observed");
+      }
+      expect(redirected.auth).toBe("");
+    });
 
     it("blocks SharePoint redirects to hosts outside allowHosts", async () => {
       const escapedUrl = "https://evil.example/internal.pdf";

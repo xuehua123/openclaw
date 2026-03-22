@@ -5,22 +5,82 @@
  */
 
 import {
-  DEFAULT_ACCOUNT_ID,
-  setAccountEnabledInConfigSection,
-  registerPluginHttpRoute,
-  buildChannelConfigSchema,
-} from "openclaw/plugin-sdk";
+  createHybridChannelConfigAdapter,
+  createScopedDmSecurityResolver,
+} from "openclaw/plugin-sdk/channel-config-helpers";
+import { buildChannelConfigSchema } from "openclaw/plugin-sdk/channel-config-schema";
+import { createTextPairingAdapter } from "openclaw/plugin-sdk/channel-pairing";
+import {
+  createConditionalWarningCollector,
+  projectWarningCollector,
+} from "openclaw/plugin-sdk/channel-policy";
+import { attachChannelToResult } from "openclaw/plugin-sdk/channel-send-result";
+import { createEmptyChannelDirectoryAdapter } from "openclaw/plugin-sdk/directory-runtime";
+import { DEFAULT_ACCOUNT_ID } from "openclaw/plugin-sdk/setup";
 import { z } from "zod";
 import { listAccountIds, resolveAccount } from "./accounts.js";
 import { sendMessage, sendFileUrl } from "./client.js";
-import { getSynologyRuntime } from "./runtime.js";
+import {
+  registerSynologyWebhookRoute,
+  validateSynologyGatewayAccountStartup,
+  waitUntilAbort,
+} from "./gateway-runtime.js";
+import { synologyChatSetupAdapter, synologyChatSetupWizard } from "./setup-surface.js";
 import type { ResolvedSynologyChatAccount } from "./types.js";
-import { createWebhookHandler } from "./webhook-handler.js";
 
 const CHANNEL_ID = "synology-chat";
 const SynologyChatConfigSchema = buildChannelConfigSchema(z.object({}).passthrough());
 
-const activeRouteUnregisters = new Map<string, () => void>();
+const resolveSynologyChatDmPolicy = createScopedDmSecurityResolver<ResolvedSynologyChatAccount>({
+  channelKey: CHANNEL_ID,
+  resolvePolicy: (account) => account.dmPolicy,
+  resolveAllowFrom: (account) => account.allowedUserIds,
+  policyPathSuffix: "dmPolicy",
+  defaultPolicy: "allowlist",
+  approveHint: "openclaw pairing approve synology-chat <code>",
+  normalizeEntry: (raw) => raw.toLowerCase().trim(),
+});
+
+const synologyChatConfigAdapter = createHybridChannelConfigAdapter<ResolvedSynologyChatAccount>({
+  sectionKey: CHANNEL_ID,
+  listAccountIds: (cfg: any) => listAccountIds(cfg),
+  resolveAccount: (cfg: any, accountId?: string | null) => resolveAccount(cfg, accountId),
+  defaultAccountId: () => DEFAULT_ACCOUNT_ID,
+  clearBaseFields: [
+    "token",
+    "incomingUrl",
+    "nasHost",
+    "webhookPath",
+    "dmPolicy",
+    "allowedUserIds",
+    "rateLimitPerMinute",
+    "botName",
+    "allowInsecureSsl",
+  ],
+  resolveAllowFrom: (account) => account.allowedUserIds,
+  formatAllowFrom: (allowFrom) =>
+    allowFrom.map((entry) => String(entry).trim().toLowerCase()).filter(Boolean),
+});
+
+const collectSynologyChatSecurityWarnings =
+  createConditionalWarningCollector<ResolvedSynologyChatAccount>(
+    (account) =>
+      !account.token &&
+      "- Synology Chat: token is not configured. The webhook will reject all requests.",
+    (account) =>
+      !account.incomingUrl &&
+      "- Synology Chat: incomingUrl is not configured. The bot cannot send replies.",
+    (account) =>
+      account.allowInsecureSsl &&
+      "- Synology Chat: SSL verification is disabled (allowInsecureSsl=true). Only use this for local NAS with self-signed certificates.",
+    (account) =>
+      account.dmPolicy === "open" &&
+      '- Synology Chat: dmPolicy="open" allows any user to message the bot. Consider "allowlist" for production use.',
+    (account) =>
+      account.dmPolicy === "allowlist" &&
+      account.allowedUserIds.length === 0 &&
+      '- Synology Chat: dmPolicy="allowlist" with empty allowedUserIds blocks all senders. Add users or set dmPolicy="open".',
+  );
 
 export function createSynologyChatPlugin() {
   return {
@@ -51,103 +111,30 @@ export function createSynologyChatPlugin() {
     reload: { configPrefixes: [`channels.${CHANNEL_ID}`] },
 
     configSchema: SynologyChatConfigSchema,
+    setup: synologyChatSetupAdapter,
+    setupWizard: synologyChatSetupWizard,
 
     config: {
-      listAccountIds: (cfg: any) => listAccountIds(cfg),
-
-      resolveAccount: (cfg: any, accountId?: string | null) => resolveAccount(cfg, accountId),
-
-      defaultAccountId: (_cfg: any) => DEFAULT_ACCOUNT_ID,
-
-      setAccountEnabled: ({ cfg, accountId, enabled }: any) => {
-        const channelConfig = cfg?.channels?.[CHANNEL_ID] ?? {};
-        if (accountId === DEFAULT_ACCOUNT_ID) {
-          return {
-            ...cfg,
-            channels: {
-              ...cfg.channels,
-              [CHANNEL_ID]: { ...channelConfig, enabled },
-            },
-          };
-        }
-        return setAccountEnabledInConfigSection({
-          cfg,
-          sectionKey: `channels.${CHANNEL_ID}`,
-          accountId,
-          enabled,
-        });
-      },
+      ...synologyChatConfigAdapter,
     },
 
-    pairing: {
+    pairing: createTextPairingAdapter({
       idLabel: "synologyChatUserId",
+      message: "OpenClaw: your access has been approved.",
       normalizeAllowEntry: (entry: string) => entry.toLowerCase().trim(),
-      notifyApproval: async ({ cfg, id }: { cfg: any; id: string }) => {
+      notify: async ({ cfg, id, message }) => {
         const account = resolveAccount(cfg);
         if (!account.incomingUrl) return;
-        await sendMessage(
-          account.incomingUrl,
-          "OpenClaw: your access has been approved.",
-          id,
-          account.allowInsecureSsl,
-        );
+        await sendMessage(account.incomingUrl, message, id, account.allowInsecureSsl);
       },
-    },
+    }),
 
     security: {
-      resolveDmPolicy: ({
-        cfg,
-        accountId,
-        account,
-      }: {
-        cfg: any;
-        accountId?: string | null;
-        account: ResolvedSynologyChatAccount;
-      }) => {
-        const resolvedAccountId = accountId ?? account.accountId ?? DEFAULT_ACCOUNT_ID;
-        const channelCfg = (cfg as any).channels?.["synology-chat"];
-        const useAccountPath = Boolean(channelCfg?.accounts?.[resolvedAccountId]);
-        const basePath = useAccountPath
-          ? `channels.synology-chat.accounts.${resolvedAccountId}.`
-          : "channels.synology-chat.";
-        return {
-          policy: account.dmPolicy ?? "allowlist",
-          allowFrom: account.allowedUserIds ?? [],
-          policyPath: `${basePath}dmPolicy`,
-          allowFromPath: basePath,
-          approveHint: "openclaw pairing approve synology-chat <code>",
-          normalizeEntry: (raw: string) => raw.toLowerCase().trim(),
-        };
-      },
-      collectWarnings: ({ account }: { account: ResolvedSynologyChatAccount }) => {
-        const warnings: string[] = [];
-        if (!account.token) {
-          warnings.push(
-            "- Synology Chat: token is not configured. The webhook will reject all requests.",
-          );
-        }
-        if (!account.incomingUrl) {
-          warnings.push(
-            "- Synology Chat: incomingUrl is not configured. The bot cannot send replies.",
-          );
-        }
-        if (account.allowInsecureSsl) {
-          warnings.push(
-            "- Synology Chat: SSL verification is disabled (allowInsecureSsl=true). Only use this for local NAS with self-signed certificates.",
-          );
-        }
-        if (account.dmPolicy === "open") {
-          warnings.push(
-            '- Synology Chat: dmPolicy="open" allows any user to message the bot. Consider "allowlist" for production use.',
-          );
-        }
-        if (account.dmPolicy === "allowlist" && account.allowedUserIds.length === 0) {
-          warnings.push(
-            '- Synology Chat: dmPolicy="allowlist" with empty allowedUserIds blocks all senders. Add users or set dmPolicy="open".',
-          );
-        }
-        return warnings;
-      },
+      resolveDmPolicy: resolveSynologyChatDmPolicy,
+      collectWarnings: projectWarningCollector(
+        ({ account }: { account: ResolvedSynologyChatAccount }) => account,
+        collectSynologyChatSecurityWarnings,
+      ),
     },
 
     messaging: {
@@ -168,18 +155,14 @@ export function createSynologyChatPlugin() {
       },
     },
 
-    directory: {
-      self: async () => null,
-      listPeers: async () => [],
-      listGroups: async () => [],
-    },
+    directory: createEmptyChannelDirectoryAdapter(),
 
     outbound: {
       deliveryMode: "gateway" as const,
       textChunkLimit: 2000,
 
-      sendText: async ({ to, text, accountId, account: ctxAccount }: any) => {
-        const account: ResolvedSynologyChatAccount = ctxAccount ?? resolveAccount({}, accountId);
+      sendText: async ({ to, text, accountId, cfg }: any) => {
+        const account: ResolvedSynologyChatAccount = resolveAccount(cfg ?? {}, accountId);
 
         if (!account.incomingUrl) {
           throw new Error("Synology Chat incoming URL not configured");
@@ -189,11 +172,11 @@ export function createSynologyChatPlugin() {
         if (!ok) {
           throw new Error("Failed to send message to Synology Chat");
         }
-        return { channel: CHANNEL_ID, messageId: `sc-${Date.now()}`, chatId: to };
+        return attachChannelToResult(CHANNEL_ID, { messageId: `sc-${Date.now()}`, chatId: to });
       },
 
-      sendMedia: async ({ to, mediaUrl, accountId, account: ctxAccount }: any) => {
-        const account: ResolvedSynologyChatAccount = ctxAccount ?? resolveAccount({}, accountId);
+      sendMedia: async ({ to, mediaUrl, accountId, cfg }: any) => {
+        const account: ResolvedSynologyChatAccount = resolveAccount(cfg ?? {}, accountId);
 
         if (!account.incomingUrl) {
           throw new Error("Synology Chat incoming URL not configured");
@@ -206,7 +189,7 @@ export function createSynologyChatPlugin() {
         if (!ok) {
           throw new Error("Failed to send media to Synology Chat");
         }
-        return { channel: CHANNEL_ID, messageId: `sc-${Date.now()}`, chatId: to };
+        return attachChannelToResult(CHANNEL_ID, { messageId: `sc-${Date.now()}`, chatId: to });
       },
     },
 
@@ -214,103 +197,24 @@ export function createSynologyChatPlugin() {
       startAccount: async (ctx: any) => {
         const { cfg, accountId, log } = ctx;
         const account = resolveAccount(cfg, accountId);
-
-        if (!account.enabled) {
-          log?.info?.(`Synology Chat account ${accountId} is disabled, skipping`);
-          return { stop: () => {} };
-        }
-
-        if (!account.token || !account.incomingUrl) {
-          log?.warn?.(
-            `Synology Chat account ${accountId} not fully configured (missing token or incomingUrl)`,
-          );
-          return { stop: () => {} };
-        }
-        if (account.dmPolicy === "allowlist" && account.allowedUserIds.length === 0) {
-          log?.warn?.(
-            `Synology Chat account ${accountId} has dmPolicy=allowlist but empty allowedUserIds; refusing to start route`,
-          );
-          return { stop: () => {} };
+        if (!validateSynologyGatewayAccountStartup({ account, accountId, log }).ok) {
+          return waitUntilAbort(ctx.abortSignal);
         }
 
         log?.info?.(
           `Starting Synology Chat channel (account: ${accountId}, path: ${account.webhookPath})`,
         );
-
-        const handler = createWebhookHandler({
-          account,
-          deliver: async (msg) => {
-            const rt = getSynologyRuntime();
-            const currentCfg = await rt.config.loadConfig();
-
-            // Build MsgContext (same format as LINE/Signal/etc.)
-            const msgCtx = {
-              Body: msg.body,
-              From: msg.from,
-              To: account.botName,
-              SessionKey: msg.sessionKey,
-              AccountId: account.accountId,
-              OriginatingChannel: CHANNEL_ID as any,
-              OriginatingTo: msg.from,
-              ChatType: msg.chatType,
-              SenderName: msg.senderName,
-            };
-
-            // Dispatch via the SDK's buffered block dispatcher
-            await rt.channel.reply.dispatchReplyWithBufferedBlockDispatcher({
-              ctx: msgCtx,
-              cfg: currentCfg,
-              dispatcherOptions: {
-                deliver: async (payload: { text?: string; body?: string }) => {
-                  const text = payload?.text ?? payload?.body;
-                  if (text) {
-                    await sendMessage(
-                      account.incomingUrl,
-                      text,
-                      msg.from,
-                      account.allowInsecureSsl,
-                    );
-                  }
-                },
-                onReplyStart: () => {
-                  log?.info?.(`Agent reply started for ${msg.from}`);
-                },
-              },
-            });
-
-            return null;
-          },
-          log,
-        });
-
-        // Deregister any stale route from a previous start (e.g. on auto-restart)
-        // to avoid "already registered" collisions that trigger infinite loops.
-        const routeKey = `${accountId}:${account.webhookPath}`;
-        const prevUnregister = activeRouteUnregisters.get(routeKey);
-        if (prevUnregister) {
-          log?.info?.(`Deregistering stale route before re-registering: ${account.webhookPath}`);
-          prevUnregister();
-          activeRouteUnregisters.delete(routeKey);
-        }
-
-        const unregister = registerPluginHttpRoute({
-          path: account.webhookPath,
-          pluginId: CHANNEL_ID,
-          accountId: account.accountId,
-          log: (msg: string) => log?.info?.(msg),
-          handler,
-        });
-        activeRouteUnregisters.set(routeKey, unregister);
+        const unregister = registerSynologyWebhookRoute({ account, accountId, log });
 
         log?.info?.(`Registered HTTP route: ${account.webhookPath} for Synology Chat`);
 
-        return {
-          stop: () => {
-            log?.info?.(`Stopping Synology Chat channel (account: ${accountId})`);
-            if (typeof unregister === "function") unregister();
-            activeRouteUnregisters.delete(routeKey);
-          },
-        };
+        // Keep alive until abort signal fires.
+        // The gateway expects a Promise that stays pending while the channel is running.
+        // Resolving immediately triggers a restart loop.
+        return waitUntilAbort(ctx.abortSignal, () => {
+          log?.info?.(`Stopping Synology Chat channel (account: ${accountId})`);
+          unregister();
+        });
       },
 
       stopAccount: async (ctx: any) => {
@@ -345,3 +249,5 @@ export function createSynologyChatPlugin() {
     },
   };
 }
+
+export const synologyChatPlugin = createSynologyChatPlugin();
